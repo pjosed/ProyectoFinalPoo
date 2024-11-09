@@ -10,6 +10,7 @@ public class Main {
         ui.setSize(800, 600);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
+        
         System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba
     });
     }
