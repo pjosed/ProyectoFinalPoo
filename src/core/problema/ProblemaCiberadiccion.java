@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package core.problema;
 
-/**
- *
- * @author Usuario
- */
-public class ProblemaCiberadiccion {
+import core.opcion.Opcion;
+import java.util.ArrayList;
+
+public class ProblemaCiberadiccion extends Problema {
+    
+    public ProblemaCiberadiccion(String tipo, ArrayList<Opcion> opciones) {
+        super(tipo, opciones);
+    }
     
 }

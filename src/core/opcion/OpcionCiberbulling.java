@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package core.opcion;
-
-/**
- *
- * @author Usuario
- */
-public class OpcionCiberbulling {
+public class OpcionCiberbulling extends Opcion {
+    
+    public OpcionCiberbulling(String descripcion, int puntaje) {
+        super(descripcion, puntaje);
+    }
     
 }

@@ -8,6 +8,8 @@ package core;
  *
  * @author Usuario
  */
-public class EstadoAnimo {
-    
+public enum EstadoAnimo {
+    feliz,
+    normal,
+    triste;
 }
