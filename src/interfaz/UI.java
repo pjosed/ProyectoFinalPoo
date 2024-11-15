@@ -1,5 +1,11 @@
 package interfaz;
 
+import java.util.Vector;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
+
 
 
 /*
@@ -478,7 +484,20 @@ public class UI extends javax.swing.JFrame {
             MainPanel.removeAll();
         MainPanel.add(Tutorial);
         MainPanel.repaint();
-        MainPanel.revalidate();  // TODO add your handling code here:
+        MainPanel.revalidate();  
+         JTextArea tutorialText = new JTextArea(
+        "En este juego debes ayudar al gato, Mr Microfost, a través de diversas situaciones que pondrán a prueba su nivel de ánimo. \n\n"
+        + "Jugarás 5 rondas, y por cada ronda verás una situación relacionada a los riesgos informáticos a los cuáles se enfrentará Mr Microfost y por la cuál tú, debes escoger la mejor opción para ayudarlo a lidiar con ella.\n\n"
+        + "No existe una respuesta correcta o incorrecta, simplemente respuestas más o menos adecuadas según el contexto. Por cada opción elevarás en una cierta cantidad el estado de ánimo de Mr Microfost, y tu objetivo es mantenerlo mayor o igual al 60%. Dependiendo de qué tan alto mantengas su nivel de ánimo hacia el final del juego, lograrás una mayor puntuación.\n\n"
+        + "¡Buena suerte!"
+    );
+    tutorialText.setLineWrap(true);
+    tutorialText.setWrapStyleWord(true);
+    tutorialText.setEditable(false);
+    Tutorial.add(tutorialText);  // Agregar el texto al panel Tutorial
+
+    tutorialText.setBounds(20, 20, 540, 300); // Ajustar tamaño y posición
+    Tutorial.setLayout(null); // Asegurar diseño absoluto
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -511,7 +530,38 @@ public class UI extends javax.swing.JFrame {
     MainPanel.removeAll();
         MainPanel.add(Puntuaciones);
         MainPanel.repaint();
-        MainPanel.revalidate();          // TODO add your handling code here:
+        MainPanel.revalidate();     
+    }
+        private DefaultTableModel tableModel; // Declarar el modelo de tabla como variable global
+
+private void initializeScoreTable() {
+    // Inicializar el modelo de tabla
+    String[] columnNames = {"Usuario", "Puntos"};
+    tableModel = new DefaultTableModel(columnNames, 0);
+}
+
+private void updateScores(String usuario, int puntos) {
+    // Agregar nuevos datos de puntuaciones
+    tableModel.addRow(new Object[]{usuario, puntos});
+
+    // Ordenar la tabla de puntuaciones de mayor a menor
+    tableModel.getDataVector().sort((o1, o2) -> {
+        int points1 = (int) ((Vector<?>) o1).get(1);
+        int points2 = (int) ((Vector<?>) o2).get(1);
+        return Integer.compare(points2, points1); // Ordenar descendente
+    });
+    tableModel.fireTableDataChanged(); // Notificar cambios en los datos
+    
+    JTable table = new JTable(tableModel);
+    table.setEnabled(false); // Deshabilitar edición
+
+    JScrollPane scrollPane = new JScrollPane(table); // Agregar scroll a la tabla
+    scrollPane.setBounds(20, 20, 300, 150); // Posición y tamaño del scroll pane
+
+    Puntuaciones.setLayout(null);
+    Puntuaciones.removeAll(); // Limpiar panel antes de agregar componentes
+    Puntuaciones.add(scrollPane);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
