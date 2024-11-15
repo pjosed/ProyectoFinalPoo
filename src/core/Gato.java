@@ -1,5 +1,6 @@
 package core;
 
+import static core.EstadoAnimo.feliz;
 import static core.EstadoAnimo.normal;
 import static core.EstadoAnimo.triste;
 import core.problema.Problema;
@@ -14,9 +15,9 @@ public class Gato {
     private ArrayList<Problema> problemas;
     int puntaje;
 
-    public Gato(EstadoAnimo estadoAnimo, int puntaje) {
-        this.estadoAnimo = estadoAnimo;
-        this.puntaje = puntaje;
+    public Gato() {
+        this.estadoAnimo = normal;
+        this.puntaje = 500;
         this.problemas = new ArrayList();
     }
 
@@ -48,14 +49,14 @@ public class Gato {
     
     
     
-    public EstadoAnimo cambiarEstado(EstadoAnimo estadoAnimo){
+    public EstadoAnimo cambiarEstado(){
         
-        if (this.puntaje <= 333.3){
+        if (this.puntaje <= 333){
             return triste;
-        } else if((this.puntaje >= 333) && (this.puntaje <= 666) ){
+        } else if((this.puntaje > 333) && (this.puntaje <= 666) ){
             return normal;
-        }else if((this.puntaje >= 666) && (this.puntaje <= 1000) ){
-            return normal;
+        }else if((this.puntaje > 666) && (this.puntaje <= 1000) ){
+            return feliz;
         }
         return null;
     }
