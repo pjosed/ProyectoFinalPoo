@@ -6,6 +6,7 @@ public abstract class Opcion {
     public Opcion(String descripcion, int puntaje) {
         this.descripcion = descripcion;
         this.puntaje = puntaje;
+
     }
 
     public String getDescripcion() {

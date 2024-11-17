@@ -1,7 +1,13 @@
 package core.problema;
 
 import core.opcion.Opcion;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public abstract class Problema {
     protected String tipo; // Puede haber otra enum de tipo problema en vez de que sea string
@@ -10,6 +16,8 @@ public abstract class Problema {
     public Problema(String tipo, ArrayList<Opcion> opciones) {
         this.tipo = tipo;
         this.opciones = opciones;
+        
+        
     }
 
     public String getTipo() {
