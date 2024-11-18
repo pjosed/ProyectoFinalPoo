@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import org.apache.poi.ss.usermodel.*;
 import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
 import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
@@ -64,16 +65,21 @@ public class UI extends javax.swing.JFrame {
         MainPanel = new javax.swing.JPanel();
         Juego = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        Opcion1 = new javax.swing.JButton();
-        Opcion4 = new javax.swing.JButton();
-        Opcion3 = new javax.swing.JButton();
-        Opcion2 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        Opcion1 = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        Opcion3 = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        Opcion2 = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        Opcion4 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         gatoNormalLabel = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        label2 = new java.awt.Label();
-        jPanel5 = new javax.swing.JPanel();
+        label4 = new java.awt.Label();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        Problem = new javax.swing.JTextArea();
         Puntuaciones = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -110,33 +116,33 @@ public class UI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 255, 204));
 
-        Opcion1.setText("Opcion1");
-        Opcion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion1ActionPerformed(evt);
-            }
-        });
+        Opcion1.setEditable(false);
+        Opcion1.setColumns(10);
+        Opcion1.setLineWrap(true);
+        Opcion1.setRows(5);
+        Opcion1.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(Opcion1);
 
-        Opcion4.setText("jButton14");
-        Opcion4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion4ActionPerformed(evt);
-            }
-        });
+        Opcion3.setEditable(false);
+        Opcion3.setColumns(10);
+        Opcion3.setLineWrap(true);
+        Opcion3.setRows(5);
+        Opcion3.setWrapStyleWord(true);
+        jScrollPane7.setViewportView(Opcion3);
 
-        Opcion3.setText("jButton13");
-        Opcion3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion3ActionPerformed(evt);
-            }
-        });
+        Opcion2.setEditable(false);
+        Opcion2.setColumns(10);
+        Opcion2.setLineWrap(true);
+        Opcion2.setRows(5);
+        Opcion2.setWrapStyleWord(true);
+        jScrollPane6.setViewportView(Opcion2);
 
-        Opcion2.setText("jButton11");
-        Opcion2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Opcion2ActionPerformed(evt);
-            }
-        });
+        Opcion4.setEditable(false);
+        Opcion4.setColumns(10);
+        Opcion4.setLineWrap(true);
+        Opcion4.setRows(5);
+        Opcion4.setWrapStyleWord(true);
+        jScrollPane8.setViewportView(Opcion4);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,28 +150,29 @@ public class UI extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Opcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Opcion3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Opcion2, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                    .addComponent(Opcion4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Opcion2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(Opcion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Opcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
-                    .addComponent(Opcion4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 204));
@@ -182,39 +189,35 @@ public class UI extends javax.swing.JFrame {
         });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 28, -1, -1));
 
-        label2.setText("Vida del Gato");
+        label4.setText("Vida del Gato");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addContainerGap(112, Short.MAX_VALUE)
+                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 6, -1, 40));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        Problem.setEditable(false);
+        Problem.setColumns(10);
+        Problem.setLineWrap(true);
+        Problem.setRows(5);
+        Problem.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(Problem);
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 260, 100));
 
         javax.swing.GroupLayout JuegoLayout = new javax.swing.GroupLayout(Juego);
         Juego.setLayout(JuegoLayout);
@@ -224,17 +227,16 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         JuegoLayout.setVerticalGroup(
             JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JuegoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         MainPanel.add(Juego, "card2");
@@ -568,57 +570,86 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(Juego);
         MainPanel.repaint();
         MainPanel.revalidate();     // TODO add your handling code here:
-        
-        
+
+        int id = 0; // ID seleccionado al azar
+        ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
+
+        // Leer la hoja 1 y seleccionar una fila aleatoria
         try {
-            
-            
-            // Ruta del archivo Excel (cambia esta ruta a la de tu archivo)
+            // Abrir el archivo Excel
             FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            
-            // Crear una instancia de Workbook (para leer archivos .xlsx)
             Workbook workbook = new XSSFWorkbook(fis);
 
-            // Obtener la primera hoja del archivo Excel
-            Sheet sheet = (Sheet) workbook.getSheetAt(0);
+            // Obtener la primera hoja (Hoja 1)
+            Sheet sheet = workbook.getSheetAt(0);
 
-            // Iterar sobre las filas de la hoja
-            for (Row row : sheet) {
-                // Imprimir la fila
-                System.out.println("Fila " + row.getRowNum() + ": ");
-                
-                // Iterar sobre las celdas de cada fila
-                for (Cell cell : row) {
-                    // Dependiendo del tipo de celda, obtener el valor
-                    switch (cell.getCellType()) {
-                        case STRING -> System.out.print(cell.getStringCellValue() + "\t");
-                        case NUMERIC -> System.out.print(cell.getNumericCellValue() + "\t");
-                        case BOOLEAN -> System.out.print(cell.getBooleanCellValue() + "\t");
-                        default -> System.out.print("Error\t");
-                    }
-                }
-                System.out.println(); // Salto de línea después de cada fila
-            }
+            // Calcular el total de filas
+            int totalRows = sheet.getPhysicalNumberOfRows();
 
-            // Cerrar el Workbook y el FileInputStream
+            // Generar un índice aleatorio (excluyendo la fila de encabezado)
+            Random random = new Random();
+            int randomRowIndex = random.nextInt(totalRows - 1) + 1; // Índice aleatorio desde la segunda fila
+
+            // Obtener la fila aleatoria
+            Row randomRow = sheet.getRow(randomRowIndex);
+
+            // Establecer el valor en el JTextArea (o JLabel) llamado Problem
+            Problem.setText(randomRow.getCell(1).getStringCellValue());
+
+            // Obtener el ID (columna 2) y convertirlo a entero
+            id = (int) randomRow.getCell(2).getNumericCellValue();
+            System.out.println("ID seleccionado: " + id);
+
+            // Cerrar recursos
             workbook.close();
             fis.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        Opcion1.setText("Respuesta1");
-        Opcion2.setText("Respuesta2");
-        Opcion3.setText("Respuesta3");
-        Opcion4.setText("Respuesta4");
 
-        
-        
-        
-        
-        
-        
+        // Leer la hoja 2 y buscar las opciones asociadas al ID
+        try {
+            // Abrir el archivo Excel
+            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
+            Workbook workbook = new XSSFWorkbook(fis);
+
+            // Obtener la segunda hoja (Hoja 2)
+            Sheet sheet = workbook.getSheetAt(1);
+
+            // Iterar sobre las filas de la hoja 2
+            for (Row row : sheet) {
+                if (row.getRowNum() != 0){
+                  if (  row.getCell(0) != null && (int)row.getCell(0).getNumericCellValue() == id) {
+                    // Agregar la opción (columna 1) a la lista
+                    strings.add(row.getCell(1).getStringCellValue());
+                }
+                    
+                }
+                
+
+            }
+
+            // Cerrar recursos
+            workbook.close();
+            fis.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Establecer las opciones en los JTextFields (o JLabel)
+        if (strings.size() >= 4) {
+            Opcion1.setText(strings.get(0));
+            Opcion2.setText(strings.get(1));
+            Opcion3.setText(strings.get(2));
+            Opcion4.setText(strings.get(3));
+        } else {
+            System.out.println("Error: No hay suficientes opciones para mostrar.");
+        }
+    
+
+
         
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -714,22 +745,6 @@ private void updateScores(String usuario, int puntos) {
         System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion2ActionPerformed
-
-    private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion1ActionPerformed
-
-    private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion3ActionPerformed
-
-    private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Opcion4ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Creditos;
@@ -737,10 +752,11 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JPanel Inicio;
     private javax.swing.JPanel Juego;
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JButton Opcion1;
-    private javax.swing.JButton Opcion2;
-    private javax.swing.JButton Opcion3;
-    private javax.swing.JButton Opcion4;
+    private javax.swing.JTextArea Opcion1;
+    private javax.swing.JTextArea Opcion2;
+    private javax.swing.JTextArea Opcion3;
+    private javax.swing.JTextArea Opcion4;
+    private javax.swing.JTextArea Problem;
     private javax.swing.JPanel Puntuaciones;
     private javax.swing.JPanel Tutorial;
     private java.awt.Button button1;
@@ -761,14 +777,18 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private java.awt.Label label1;
-    private java.awt.Label label2;
     private java.awt.Label label3;
+    private java.awt.Label label4;
     private java.awt.TextArea textArea1;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
