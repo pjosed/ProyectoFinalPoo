@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="MainPanel" alignment="0" pref="1008" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -60,10 +60,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel3" min="-2" pref="763" max="-2" attributes="0"/>
-                          <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                          <Component id="jPanel3" pref="1002" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -72,8 +71,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" pref="510" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel2" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -92,18 +91,15 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane5" min="-2" pref="373" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane6" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane7" min="-2" pref="373" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane8" min="-2" pref="373" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="Opcion1" pref="487" max="32767" attributes="0"/>
+                              <Component id="Opcion3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Opcion2" max="32767" attributes="0"/>
+                              <Component id="Opcion4" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -111,93 +107,54 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jScrollPane5" min="-2" pref="70" max="-2" attributes="0"/>
-                              <Component id="jScrollPane6" min="-2" pref="70" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Opcion1" pref="64" max="32767" attributes="0"/>
+                              <Component id="Opcion2" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jScrollPane8" pref="70" max="32767" attributes="0"/>
-                              <Component id="jScrollPane7" pref="0" max="32767" attributes="0"/>
+                              <Component id="Opcion3" pref="64" max="32767" attributes="0"/>
+                              <Component id="Opcion4" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane5">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="Opcion1">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="10"/>
-                        <Property name="lineWrap" type="boolean" value="true"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="wrapStyleWord" type="boolean" value="true"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane7">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="Opcion3">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="10"/>
-                        <Property name="lineWrap" type="boolean" value="true"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="wrapStyleWord" type="boolean" value="true"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane6">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="Opcion2">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="10"/>
-                        <Property name="lineWrap" type="boolean" value="true"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="wrapStyleWord" type="boolean" value="true"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane8">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="Opcion4">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="10"/>
-                        <Property name="lineWrap" type="boolean" value="true"/>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="wrapStyleWord" type="boolean" value="true"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
+                <Component class="javax.swing.JButton" name="Opcion1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Opcion1"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Opcion1ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="Opcion2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Opcion2"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Opcion2ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="Opcion3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Opcion3"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Opcion3ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="Opcion4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Opcion4"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Opcion4ActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel3">
@@ -326,7 +283,7 @@
                               <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="204" max="32767" attributes="0"/>
+                      <EmptySpace pref="412" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -339,7 +296,7 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="325" max="-2" attributes="0"/>
-                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                      <EmptySpace pref="210" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -411,7 +368,7 @@
                               <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                      <EmptySpace pref="308" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -424,7 +381,7 @@
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="textArea1" min="-2" pref="336" max="-2" attributes="0"/>
-                      <EmptySpace pref="124" max="32767" attributes="0"/>
+                      <EmptySpace pref="192" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -476,7 +433,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="221" max="32767" attributes="0"/>
+                      <EmptySpace pref="429" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="387" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
                   </Group>
@@ -504,7 +461,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="label3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="220" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                   </Group>
@@ -578,7 +535,7 @@
                               <Component id="jButton10" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="379" max="32767" attributes="0"/>
+                      <EmptySpace pref="587" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -593,7 +550,7 @@
                       <Component id="textField1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="button1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="327" max="32767" attributes="0"/>
+                      <EmptySpace pref="395" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
