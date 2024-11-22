@@ -7,9 +7,8 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class Juego {
-    private ArrayList<Integer> rondas;
     private ArrayList<Jugador> jugadores;
-    private Gato gato;
+    
     
     
     public void iniciarJuego(){

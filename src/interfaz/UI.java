@@ -1,6 +1,8 @@
 package interfaz;
 
+import core.Gato;
 import core.problema.Problema;
+import java.awt.event.ActionEvent;
 import java.util.Vector;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -11,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JLabel;
 import org.apache.poi.ss.usermodel.*;
 import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
 import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
@@ -72,8 +75,8 @@ public class UI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         gatoNormalLabel = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        label4 = new java.awt.Label();
+        jPanelPuntaje = new javax.swing.JPanel();
+        labelPuntaje = new java.awt.Label();
         jScrollPane4 = new javax.swing.JScrollPane();
         Problem = new javax.swing.JTextArea();
         Puntuaciones = new javax.swing.JPanel();
@@ -184,26 +187,26 @@ public class UI extends javax.swing.JFrame {
         });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 28, -1, -1));
 
-        label4.setText("Vida del Gato");
+        labelPuntaje.setText("Vida del Gato");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelPuntajeLayout = new javax.swing.GroupLayout(jPanelPuntaje);
+        jPanelPuntaje.setLayout(jPanelPuntajeLayout);
+        jPanelPuntajeLayout.setHorizontalGroup(
+            jPanelPuntajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPuntajeLayout.createSequentialGroup()
                 .addContainerGap(112, Short.MAX_VALUE)
-                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        jPanelPuntajeLayout.setVerticalGroup(
+            jPanelPuntajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPuntajeLayout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 6, -1, 40));
+        jPanel3.add(jPanelPuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 6, -1, 40));
 
         Problem.setEditable(false);
         Problem.setColumns(10);
@@ -222,7 +225,7 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)))
         );
         JuegoLayout.setVerticalGroup(
             JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,7 +431,7 @@ public class UI extends javax.swing.JFrame {
                     .addGroup(IngresarUsuarioLayout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jButton10)))
-                .addContainerGap(587, Short.MAX_VALUE))
+                .addContainerGap(379, Short.MAX_VALUE))
         );
         IngresarUsuarioLayout.setVerticalGroup(
             IngresarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,7 +444,7 @@ public class UI extends javax.swing.JFrame {
                 .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         MainPanel.add(IngresarUsuario, "card2");
@@ -566,7 +569,24 @@ public class UI extends javax.swing.JFrame {
         MainPanel.revalidate();     // TODO add your handling code here:
 
         int id = 0; // ID seleccionado al azar
+        
+        
         ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
+        
+        
+        
+      
+                Gato gato = Gato.getInstancia();
+                
+                
+                // Cambiar el texto de la JLabel
+                labelPuntaje.setText("Puntaje: " + gato.getPuntaje());
+
+                // Revalidar y repintar el panel para reflejar el cambio visualmente
+                jPanelPuntaje.revalidate();
+                jPanelPuntaje.repaint();
+                Juego.revalidate();
+                Juego.repaint();
 
         // Leer la hoja 1 y seleccionar una fila aleatoria
         try {
@@ -617,6 +637,7 @@ public class UI extends javax.swing.JFrame {
                   if (  row.getCell(0) != null && (int)row.getCell(0).getNumericCellValue() == id) {
                     // Agregar la opción (columna 1) a la lista
                     strings.add(row.getCell(1).getStringCellValue());
+                    
                 }
                     
                 }
@@ -743,6 +764,8 @@ private void updateScores(String usuario, int puntos) {
  int id = 0; // ID seleccionado al azar
         ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
 
+        
+        
         // Leer la hoja 1 y seleccionar una fila aleatoria
         try {
             // Abrir el archivo Excel
@@ -1088,9 +1111,9 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelPuntaje;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1098,7 +1121,7 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JTextArea jTextArea1;
     private java.awt.Label label1;
     private java.awt.Label label3;
-    private java.awt.Label label4;
+    private java.awt.Label labelPuntaje;
     private java.awt.TextArea textArea1;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables

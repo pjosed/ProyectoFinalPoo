@@ -15,12 +15,22 @@ public class Gato {
     private ArrayList<Problema> problemas;
     int puntaje;
 
-    public Gato() {
+    private static Gato instancia; // Instancia única del Gato
+    
+    private Gato() {
         this.estadoAnimo = normal;
         this.puntaje = 500;
         this.problemas = new ArrayList();
     }
 
+    // Método estático para obtener la instancia única del Gato
+    public static Gato getInstancia() {
+        if (instancia == null) {
+            instancia = new Gato();
+        }
+        return instancia;
+    }
+    
     public EstadoAnimo getEstadoAnimo() {
         return estadoAnimo;
     }
@@ -69,11 +79,11 @@ public class Gato {
         return true;
     }
     
-    public int actualizarPuntaje(int puntaje){
-        // No implementado aun
-        return 0;
+    public int actualizarPuntaje(int puntos){
+        this.puntaje = this.puntaje + puntos;
+        return puntaje;
     }
     
     
     
-            }
+}
