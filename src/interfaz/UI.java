@@ -13,9 +13,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.JTableHeader;
 import org.apache.poi.ss.usermodel.*;
 import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
 import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
@@ -80,7 +82,7 @@ public class UI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Puntuaciones = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         Juego = new javax.swing.JPanel();
@@ -177,21 +179,33 @@ public class UI extends javax.swing.JFrame {
         Puntuaciones.setPreferredSize(new java.awt.Dimension(800, 600));
         Puntuaciones.setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setBackground(new java.awt.Color(0, 0, 0));
+        jTable.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
+        jTable.setForeground(new java.awt.Color(255, 255, 255));
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Usuario", "Puntaje"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jTable.setRowHeight(35);
+        jTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        jTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(jTable);
 
         Puntuaciones.add(jScrollPane2);
-        jScrollPane2.setBounds(152, 150, 770, 360);
+        jScrollPane2.setBounds(150, 130, 770, 370);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton7.setText("Salir");
@@ -495,6 +509,14 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(Puntuaciones);
         MainPanel.repaint();
         MainPanel.revalidate();     
+        
+        // Cambiar apariencia del encabezado
+        JTableHeader header = jTable.getTableHeader();
+        header.setBackground(java.awt.Color.BLACK); // Fondo del encabezado
+        header.setForeground(java.awt.Color.WHITE); // Texto del encabezado
+        header.setFont(new java.awt.Font("Rockwell Extra Bold", java.awt.Font.BOLD, 16)); // Fuente del encabezado
+        
+        
     }
         private DefaultTableModel tableModel; // Declarar el modelo de tabla como variable global
 
@@ -728,7 +750,7 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }
