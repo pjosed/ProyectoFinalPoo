@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import org.apache.poi.ss.usermodel.*;
 import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
 import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
@@ -582,9 +583,14 @@ public class UI extends javax.swing.JFrame {
         
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
         Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
         Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+
         
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -681,51 +687,89 @@ private void updateScores(String usuario, int puntos) {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
+        if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion1.getClientProperty("Valor"));
         labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
         
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
         Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
         Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
+        }
+        
+        
     }//GEN-LAST:event_Opcion1ActionPerformed
 
     private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
-     labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+         if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion2.getClientProperty("Valor"));
+        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
         
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
         Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
         Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+         }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
+        }
     }//GEN-LAST:event_Opcion2ActionPerformed
 
     private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
-    labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+         if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion3.getClientProperty("Valor"));
+        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
         
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
         Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
         Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+         }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
+        }
     }//GEN-LAST:event_Opcion3ActionPerformed
 
     private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
-   labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+         if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion4.getClientProperty("Valor"));
+        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
         
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
         Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
         Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+         }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
+        }
     }//GEN-LAST:event_Opcion4ActionPerformed
 
 

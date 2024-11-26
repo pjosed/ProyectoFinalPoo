@@ -84,4 +84,11 @@ public class ProblemaServices {
         }
        return null;
     }
+    public Boolean lessThanFive() {
+        if (5 > ids.size()) {
+            return true;
+        }
+        return false;
+
+    }
 }
