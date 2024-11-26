@@ -103,13 +103,10 @@ public class UI extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         IngresarUsuario = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         textField1 = new java.awt.TextField();
-        button1 = new java.awt.Button();
         jButton10 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,6 +195,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton7.setText("Salir");
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -385,15 +385,7 @@ public class UI extends javax.swing.JFrame {
         IngresarUsuario.setPreferredSize(new java.awt.Dimension(800, 600));
         IngresarUsuario.setLayout(null);
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("-->");
-        IngresarUsuario.add(jLabel7);
-        jLabel7.setBounds(460, 470, 30, 30);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonJugar_1.PNG"))); // NOI18N
-        IngresarUsuario.add(jLabel2);
-        jLabel2.setBounds(310, 450, 180, 80);
-
+        textField1.setFont(new java.awt.Font("Dubai Medium", 0, 18)); // NOI18N
         textField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField1ActionPerformed(evt);
@@ -401,16 +393,6 @@ public class UI extends javax.swing.JFrame {
         });
         IngresarUsuario.add(textField1);
         textField1.setBounds(670, 320, 350, 40);
-
-        button1.setBackground(new java.awt.Color(0, 0, 0));
-        button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-        IngresarUsuario.add(button1);
-        button1.setBounds(500, 460, 160, 60);
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonRegresar.PNG"))); // NOI18N
         jButton10.setText("Exit");
@@ -425,16 +407,22 @@ public class UI extends javax.swing.JFrame {
         IngresarUsuario.add(jButton10);
         jButton10.setBounds(40, 30, 190, 70);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IngresarUsuario.gif"))); // NOI18N
-        IngresarUsuario.add(jLabel5);
-        jLabel5.setBounds(0, -30, 1390, 710);
-
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonJugar_1.PNG"))); // NOI18N
         jButton11.setText("jButton11");
         jButton11.setBorderPainted(false);
         jButton11.setContentAreaFilled(false);
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
         IngresarUsuario.add(jButton11);
-        jButton11.setBounds(501, 463, 170, 60);
+        jButton11.setBounds(520, 480, 170, 60);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IngresarUsuario.gif"))); // NOI18N
+        IngresarUsuario.add(jLabel5);
+        jLabel5.setBounds(0, -30, 1390, 710);
 
         MainPanel.add(IngresarUsuario, "card2");
 
@@ -491,14 +479,14 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
+        
     java.awt.EventQueue.invokeLater(() -> {
         this.dispose();
         UI ui = new UI();
-        ui.setSize(800, 600);
+        ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
-        System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba
+        
     });
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -551,35 +539,35 @@ private void updateScores(String usuario, int puntos) {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
+        
     
         this.dispose();
         UI ui = new UI();
         ui.setSize(1152, 660);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
-        System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba        // TODO add your handling code here:
+               // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-      System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
+      
         this.dispose();
         UI ui = new UI();
         ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
-        System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba         // TODO add your handling code here:
+                 // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-      System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
+      
     
         this.dispose();
         UI ui = new UI();
-        ui.setSize(800, 600);
+        ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
-        System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba         // TODO add your handling code here:
+                 // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
@@ -676,7 +664,7 @@ private void updateScores(String usuario, int puntos) {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         this.problemaService = new ProblemaServices();
         MainPanel.removeAll();
         MainPanel.add(Juego);
@@ -702,8 +690,7 @@ private void updateScores(String usuario, int puntos) {
         Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
         Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
-
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_jButton11ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -719,7 +706,6 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JTextArea Problem;
     private javax.swing.JPanel Puntuaciones;
     private javax.swing.JPanel Tutorial;
-    private java.awt.Button button1;
     private javax.swing.JLabel gatoNormalLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -733,12 +719,10 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JProgressBar jProgressBar;
