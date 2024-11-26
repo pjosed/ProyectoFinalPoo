@@ -97,9 +97,8 @@ public class UI extends javax.swing.JFrame {
         Opcion3 = new javax.swing.JButton();
         Opcion4 = new javax.swing.JButton();
         Creditos = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        textArea1 = new java.awt.TextArea();
         jButton8 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         Tutorial = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -326,49 +325,21 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(Juego, "card2");
 
         Creditos.setPreferredSize(new java.awt.Dimension(800, 600));
+        Creditos.setLayout(null);
 
-        jLabel5.setText("Credits");
-
-        textArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textArea1.setEditable(false);
-        textArea1.setEnabled(false);
-        textArea1.setText("Ana Meza\nAlexander Rangel\nAlejandro Cuello\nJulian Castro\nJose Peña");
-
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton8.setText("Salir");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
+        Creditos.add(jButton8);
+        jButton8.setBounds(50, 30, 200, 70);
 
-        javax.swing.GroupLayout CreditosLayout = new javax.swing.GroupLayout(Creditos);
-        Creditos.setLayout(CreditosLayout);
-        CreditosLayout.setHorizontalGroup(
-            CreditosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CreditosLayout.createSequentialGroup()
-                .addGroup(CreditosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CreditosLayout.createSequentialGroup()
-                        .addGap(353, 353, 353)
-                        .addComponent(jLabel5))
-                    .addGroup(CreditosLayout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CreditosLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jButton8)))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-        CreditosLayout.setVerticalGroup(
-            CreditosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CreditosLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jButton8)
-                .addGap(55, 55, 55)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Creditos_1.gif"))); // NOI18N
+        Creditos.add(jLabel4);
+        jLabel4.setBounds(0, -30, 1160, 710);
 
         MainPanel.add(Creditos, "card2");
 
@@ -574,7 +545,7 @@ private void updateScores(String usuario, int puntos) {
     
         this.dispose();
         UI ui = new UI();
-        ui.setSize(800, 600);
+        ui.setSize(1152, 660);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
         System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba        // TODO add your handling code here:
@@ -716,7 +687,7 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -725,7 +696,6 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private java.awt.Label labelPuntaje;
-    private java.awt.TextArea textArea1;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }
