@@ -7,7 +7,7 @@ public class Main {
     System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
     java.awt.EventQueue.invokeLater(() -> {
         UI ui = new UI();
-        ui.setSize(800, 600);
+        ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
         
