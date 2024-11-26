@@ -96,6 +96,7 @@ public class UI extends javax.swing.JFrame {
         Opcion2 = new javax.swing.JButton();
         Opcion3 = new javax.swing.JButton();
         Opcion4 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         Creditos = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -203,20 +204,26 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(Puntuaciones, "card2");
 
         Juego.setPreferredSize(new java.awt.Dimension(800, 600));
+        Juego.setLayout(null);
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setPreferredSize(new java.awt.Dimension(1154, 680));
+        jPanel3.setLayout(null);
 
+        gatoNormalLabel.setForeground(new java.awt.Color(255, 255, 255));
         gatoNormalLabel.setText("Gatoo");
-        jPanel3.add(gatoNormalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 70, 40));
+        jPanel3.add(gatoNormalLabel);
+        gatoNormalLabel.setBounds(510, 550, 70, 40);
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton5.setText("Salir");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 28, -1, -1));
+        jPanel3.add(jButton5);
+        jButton5.setBounds(40, 40, 200, 60);
 
         labelPuntaje.setText("Vida del Gato");
 
@@ -237,7 +244,8 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.add(jPanelPuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 6, -1, 40));
+        jPanel3.add(jPanelPuntaje);
+        jPanelPuntaje.setBounds(690, 30, 268, 40);
 
         Problem.setEditable(false);
         Problem.setColumns(10);
@@ -246,9 +254,11 @@ public class UI extends javax.swing.JFrame {
         Problem.setWrapStyleWord(true);
         jScrollPane4.setViewportView(Problem);
 
-        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 260, 100));
+        jPanel3.add(jScrollPane4);
+        jScrollPane4.setBounds(420, 180, 260, 100);
 
         jPanel2.setBackground(new java.awt.Color(51, 255, 204));
+        jPanel2.setLayout(null);
 
         Opcion1.setText("Opcion1");
         Opcion1.setToolTipText("");
@@ -257,6 +267,8 @@ public class UI extends javax.swing.JFrame {
                 Opcion1ActionPerformed(evt);
             }
         });
+        jPanel2.add(Opcion1);
+        Opcion1.setBounds(14, 6, 410, 64);
 
         Opcion2.setText("Opcion2");
         Opcion2.addActionListener(new java.awt.event.ActionListener() {
@@ -264,6 +276,8 @@ public class UI extends javax.swing.JFrame {
                 Opcion2ActionPerformed(evt);
             }
         });
+        jPanel2.add(Opcion2);
+        Opcion2.setBounds(20, 150, 400, 64);
 
         Opcion3.setText("Opcion3");
         Opcion3.addActionListener(new java.awt.event.ActionListener() {
@@ -271,6 +285,8 @@ public class UI extends javax.swing.JFrame {
                 Opcion3ActionPerformed(evt);
             }
         });
+        jPanel2.add(Opcion3);
+        Opcion3.setBounds(20, 80, 400, 64);
 
         Opcion4.setText("Opcion4");
         Opcion4.addActionListener(new java.awt.event.ActionListener() {
@@ -278,53 +294,18 @@ public class UI extends javax.swing.JFrame {
                 Opcion4ActionPerformed(evt);
             }
         });
+        jPanel2.add(Opcion4);
+        Opcion4.setBounds(30, 230, 390, 64);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Opcion1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                    .addComponent(Opcion3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Opcion2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                    .addComponent(Opcion4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(16, 16, 16))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Opcion2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(Opcion1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Opcion3, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(Opcion4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jPanel3.add(jPanel2);
+        jPanel2.setBounds(-10, 260, 440, 320);
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 750, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FondoJuego.gif"))); // NOI18N
+        jPanel3.add(jLabel8);
+        jLabel8.setBounds(0, -10, 1160, 680);
 
-        javax.swing.GroupLayout JuegoLayout = new javax.swing.GroupLayout(Juego);
-        Juego.setLayout(JuegoLayout);
-        JuegoLayout.setHorizontalGroup(
-            JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JuegoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        JuegoLayout.setVerticalGroup(
-            JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JuegoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
+        Juego.add(jPanel3);
+        jPanel3.setBounds(0, 0, 1468, 750);
 
         MainPanel.add(Juego, "card2");
 
@@ -722,6 +703,7 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelPuntaje;
