@@ -95,11 +95,9 @@ public class UI extends javax.swing.JFrame {
         textArea1 = new java.awt.TextArea();
         jButton8 = new javax.swing.JButton();
         Tutorial = new javax.swing.JPanel();
-        label3 = new java.awt.Label();
         jButton6 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButton9 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         IngresarUsuario = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         textField1 = new java.awt.TextField();
@@ -347,8 +345,8 @@ public class UI extends javax.swing.JFrame {
 
         textArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textArea1.setEditable(false);
-        textArea1.setEnabled(false);
         textArea1.setText("Ana Meza\nAlexander Rangel\nAlejandro Cuello\nJulian Castro\nJose Peña");
+        textArea1.setEnabled(false);
 
         jButton8.setText("Salir");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -389,58 +387,27 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(Creditos, "card2");
 
         Tutorial.setPreferredSize(new java.awt.Dimension(800, 600));
+        Tutorial.setLayout(null);
 
-        label3.setText("Tutorial");
-
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonEscuchar.PNG"))); // NOI18N
         jButton6.setText("Escuchar");
+        Tutorial.add(jButton6);
+        jButton6.setBounds(907, 33, 200, 60);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial\nTutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial Tutorial");
-        jScrollPane1.setViewportView(jTextArea1);
-
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonRegresar.PNG"))); // NOI18N
         jButton9.setText("Exit");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
+        Tutorial.add(jButton9);
+        jButton9.setBounds(70, 30, 190, 70);
 
-        javax.swing.GroupLayout TutorialLayout = new javax.swing.GroupLayout(Tutorial);
-        Tutorial.setLayout(TutorialLayout);
-        TutorialLayout.setHorizontalGroup(
-            TutorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TutorialLayout.createSequentialGroup()
-                .addGap(365, 365, 365)
-                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TutorialLayout.createSequentialGroup()
-                .addContainerGap(221, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TutorialLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(82, 82, 82))
-        );
-        TutorialLayout.setVerticalGroup(
-            TutorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TutorialLayout.createSequentialGroup()
-                .addGroup(TutorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(TutorialLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jButton6))
-                    .addGroup(TutorialLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton9)))
-                .addGap(32, 32, 32)
-                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tutorial.gif"))); // NOI18N
+        jLabel3.setPreferredSize(new java.awt.Dimension(1200, 680));
+        Tutorial.add(jLabel3);
+        jLabel3.setBounds(0, -20, 1190, 690);
 
         MainPanel.add(Tutorial, "card2");
 
@@ -730,7 +697,7 @@ private void updateScores(String usuario, int puntos) {
       System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
         this.dispose();
         UI ui = new UI();
-        ui.setSize(800, 600);
+        ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
         System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba         // TODO add your handling code here:
@@ -1097,17 +1064,15 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelPuntaje;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private java.awt.Label label3;
     private java.awt.Label labelPuntaje;
     private java.awt.TextArea textArea1;
     private java.awt.TextField textField1;
