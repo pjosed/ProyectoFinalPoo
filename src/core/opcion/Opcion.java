@@ -1,12 +1,21 @@
 package core.opcion;
-public abstract class Opcion {
-    protected String descripcion;
-    protected int puntaje;
+public class Opcion {
+    private String descripcion;
+    private int puntaje;
+    private String explicacion ;
 
-    public Opcion(String descripcion, int puntaje) {
+    public String getExplicacion() {
+        return explicacion;
+    }
+
+    public void setExplicacion(String explicacion) {
+        this.explicacion = explicacion;
+    }
+
+    public Opcion(String descripcion, int puntaje,String explicacion) {
         this.descripcion = descripcion;
         this.puntaje = puntaje;
-
+        this.explicacion = explicacion;
     }
 
     public String getDescripcion() {

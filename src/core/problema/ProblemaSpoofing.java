@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class ProblemaSpoofing extends Problema {
     
-    public ProblemaSpoofing(String tipo, ArrayList<Opcion> opciones) {
-        super(tipo, opciones);
+    public ProblemaSpoofing(String tipo,String textoProblema, ArrayList<Opcion> opciones) {
+        super(tipo, textoProblema, opciones);
     }
     
 }
