@@ -79,10 +79,10 @@ public class UI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Puntuaciones = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         Juego = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         gatoNormalLabel = new javax.swing.JLabel();
@@ -165,8 +165,7 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(Inicio, "card3");
 
         Puntuaciones.setPreferredSize(new java.awt.Dimension(800, 600));
-
-        jLabel4.setText("Ranking");
+        Puntuaciones.setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,41 +180,22 @@ public class UI extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        Puntuaciones.add(jScrollPane2);
+        jScrollPane2.setBounds(152, 150, 770, 360);
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton7.setText("Salir");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
+        Puntuaciones.add(jButton7);
+        jButton7.setBounds(30, 10, 200, 60);
 
-        javax.swing.GroupLayout PuntuacionesLayout = new javax.swing.GroupLayout(Puntuaciones);
-        Puntuaciones.setLayout(PuntuacionesLayout);
-        PuntuacionesLayout.setHorizontalGroup(
-            PuntuacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PuntuacionesLayout.createSequentialGroup()
-                .addGroup(PuntuacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PuntuacionesLayout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addComponent(jLabel4))
-                    .addGroup(PuntuacionesLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PuntuacionesLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jButton7)))
-                .addContainerGap(204, Short.MAX_VALUE))
-        );
-        PuntuacionesLayout.setVerticalGroup(
-            PuntuacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PuntuacionesLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jButton7)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel4)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/Puntuacion.gif"))); // NOI18N
+        Puntuaciones.add(jLabel6);
+        jLabel6.setBounds(-20, 0, 1210, 620);
 
         MainPanel.add(Puntuaciones, "card2");
 
@@ -351,8 +331,8 @@ public class UI extends javax.swing.JFrame {
 
         textArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textArea1.setEditable(false);
-        textArea1.setText("Ana Meza\nAlexander Rangel\nAlejandro Cuello\nJulian Castro\nJose Peña");
         textArea1.setEnabled(false);
+        textArea1.setText("Ana Meza\nAlexander Rangel\nAlejandro Cuello\nJulian Castro\nJose Peña");
 
         jButton8.setText("Salir");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -418,10 +398,15 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(Tutorial, "card2");
 
         IngresarUsuario.setPreferredSize(new java.awt.Dimension(800, 600));
+        IngresarUsuario.setLayout(null);
 
         jLabel2.setText("Ingresa Tu Usuario");
+        IngresarUsuario.add(jLabel2);
+        jLabel2.setBounds(324, 119, 97, 16);
 
         textField1.setText("textField1");
+        IngresarUsuario.add(textField1);
+        textField1.setBounds(324, 180, 97, 20);
 
         button1.setLabel("Iniciar Juego");
         button1.addActionListener(new java.awt.event.ActionListener() {
@@ -429,6 +414,8 @@ public class UI extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
+        IngresarUsuario.add(button1);
+        button1.setBounds(324, 249, 97, 24);
 
         jButton10.setText("Exit");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -436,37 +423,8 @@ public class UI extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout IngresarUsuarioLayout = new javax.swing.GroupLayout(IngresarUsuario);
-        IngresarUsuario.setLayout(IngresarUsuarioLayout);
-        IngresarUsuarioLayout.setHorizontalGroup(
-            IngresarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(IngresarUsuarioLayout.createSequentialGroup()
-                .addGroup(IngresarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(IngresarUsuarioLayout.createSequentialGroup()
-                        .addGap(324, 324, 324)
-                        .addGroup(IngresarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(IngresarUsuarioLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton10)))
-                .addContainerGap(379, Short.MAX_VALUE))
-        );
-        IngresarUsuarioLayout.setVerticalGroup(
-            IngresarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(IngresarUsuarioLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jButton10)
-                .addGap(42, 42, 42)
-                .addComponent(jLabel2)
-                .addGap(45, 45, 45)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(327, Short.MAX_VALUE))
-        );
+        IngresarUsuario.add(jButton10);
+        jButton10.setBounds(54, 54, 72, 23);
 
         MainPanel.add(IngresarUsuario, "card2");
 
@@ -605,7 +563,7 @@ private void updateScores(String usuario, int puntos) {
         System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
         this.dispose();
         UI ui = new UI();
-        ui.setSize(800, 600);
+        ui.setSize(1152, 685);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
         System.out.println("Ventana UI debería estar visible ahora"); // Mensaje de prueba        // TODO add your handling code here:
@@ -758,8 +716,8 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelPuntaje;
