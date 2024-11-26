@@ -87,15 +87,13 @@ public class UI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         gatoNormalLabel = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jPanelPuntaje = new javax.swing.JPanel();
-        labelPuntaje = new java.awt.Label();
         jScrollPane4 = new javax.swing.JScrollPane();
         Problem = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
         Opcion1 = new javax.swing.JButton();
         Opcion2 = new javax.swing.JButton();
         Opcion3 = new javax.swing.JButton();
         Opcion4 = new javax.swing.JButton();
+        jProgressBar = new javax.swing.JProgressBar();
         jLabel8 = new javax.swing.JLabel();
         Creditos = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
@@ -112,7 +110,6 @@ public class UI extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,6 +121,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonIniciar.PNG"))); // NOI18N
         jButton1.setText("Iniciar");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -134,6 +134,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonTutorial.PNG"))); // NOI18N
         jButton2.setText("Tutorial");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -144,6 +147,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonCreditos.PNG"))); // NOI18N
         jButton3.setText("Creditos");
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -154,6 +160,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonPuntuacion.PNG"))); // NOI18N
         jButton4.setText("Puntuacion");
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -217,6 +226,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton5.setText("Salir");
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -225,80 +237,88 @@ public class UI extends javax.swing.JFrame {
         jPanel3.add(jButton5);
         jButton5.setBounds(40, 40, 200, 60);
 
-        labelPuntaje.setText("Vida del Gato");
-
-        javax.swing.GroupLayout jPanelPuntajeLayout = new javax.swing.GroupLayout(jPanelPuntaje);
-        jPanelPuntaje.setLayout(jPanelPuntajeLayout);
-        jPanelPuntajeLayout.setHorizontalGroup(
-            jPanelPuntajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPuntajeLayout.createSequentialGroup()
-                .addContainerGap(112, Short.MAX_VALUE)
-                .addComponent(labelPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
-        );
-        jPanelPuntajeLayout.setVerticalGroup(
-            jPanelPuntajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPuntajeLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(labelPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel3.add(jPanelPuntaje);
-        jPanelPuntaje.setBounds(690, 30, 268, 40);
-
         Problem.setEditable(false);
+        Problem.setBackground(new java.awt.Color(0, 0, 0));
         Problem.setColumns(10);
+        Problem.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        Problem.setForeground(new java.awt.Color(255, 255, 255));
         Problem.setLineWrap(true);
-        Problem.setRows(5);
+        Problem.setRows(3);
         Problem.setWrapStyleWord(true);
+        Problem.setBorder(null);
+        Problem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Problem.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jScrollPane4.setViewportView(Problem);
 
         jPanel3.add(jScrollPane4);
-        jScrollPane4.setBounds(420, 180, 260, 100);
+        jScrollPane4.setBounds(30, 120, 660, 130);
 
-        jPanel2.setBackground(new java.awt.Color(51, 255, 204));
-        jPanel2.setLayout(null);
-
+        Opcion1.setForeground(new java.awt.Color(255, 255, 255));
+        Opcion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonOpciones.png"))); // NOI18N
         Opcion1.setText("Opcion1");
         Opcion1.setToolTipText("");
+        Opcion1.setBorderPainted(false);
+        Opcion1.setContentAreaFilled(false);
+        Opcion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opcion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Opcion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Opcion1ActionPerformed(evt);
             }
         });
-        jPanel2.add(Opcion1);
-        Opcion1.setBounds(14, 6, 410, 64);
+        jPanel3.add(Opcion1);
+        Opcion1.setBounds(30, 310, 530, 90);
 
+        Opcion2.setForeground(new java.awt.Color(255, 255, 255));
+        Opcion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonOpciones.png"))); // NOI18N
         Opcion2.setText("Opcion2");
+        Opcion2.setBorderPainted(false);
+        Opcion2.setContentAreaFilled(false);
+        Opcion2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opcion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Opcion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Opcion2ActionPerformed(evt);
             }
         });
-        jPanel2.add(Opcion2);
-        Opcion2.setBounds(20, 150, 400, 64);
+        jPanel3.add(Opcion2);
+        Opcion2.setBounds(600, 310, 530, 90);
 
+        Opcion3.setForeground(new java.awt.Color(255, 255, 255));
+        Opcion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonOpciones.png"))); // NOI18N
         Opcion3.setText("Opcion3");
+        Opcion3.setBorderPainted(false);
+        Opcion3.setContentAreaFilled(false);
+        Opcion3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opcion3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Opcion3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Opcion3ActionPerformed(evt);
             }
         });
-        jPanel2.add(Opcion3);
-        Opcion3.setBounds(20, 80, 400, 64);
+        jPanel3.add(Opcion3);
+        Opcion3.setBounds(30, 460, 530, 90);
 
+        Opcion4.setForeground(new java.awt.Color(255, 255, 255));
+        Opcion4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonOpciones.png"))); // NOI18N
         Opcion4.setText("Opcion4");
+        Opcion4.setBorderPainted(false);
+        Opcion4.setContentAreaFilled(false);
+        Opcion4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opcion4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Opcion4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Opcion4ActionPerformed(evt);
             }
         });
-        jPanel2.add(Opcion4);
-        Opcion4.setBounds(30, 230, 390, 64);
+        jPanel3.add(Opcion4);
+        Opcion4.setBounds(600, 460, 530, 90);
 
-        jPanel3.add(jPanel2);
-        jPanel2.setBounds(-10, 260, 440, 320);
+        jProgressBar.setBackground(new java.awt.Color(255, 255, 255));
+        jProgressBar.setForeground(new java.awt.Color(102, 102, 255));
+        jProgressBar.setMaximum(1000);
+        jPanel3.add(jProgressBar);
+        jProgressBar.setBounds(830, 70, 250, 40);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FondoJuego.gif"))); // NOI18N
         jPanel3.add(jLabel8);
@@ -314,6 +334,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton8.setText("Salir");
+        jButton8.setBorderPainted(false);
+        jButton8.setContentAreaFilled(false);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -333,11 +356,17 @@ public class UI extends javax.swing.JFrame {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonEscuchar.PNG"))); // NOI18N
         jButton6.setText("Escuchar");
+        jButton6.setBorderPainted(false);
+        jButton6.setContentAreaFilled(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Tutorial.add(jButton6);
         jButton6.setBounds(907, 33, 200, 60);
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonRegresar.PNG"))); // NOI18N
         jButton9.setText("Exit");
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -374,6 +403,7 @@ public class UI extends javax.swing.JFrame {
         textField1.setBounds(670, 320, 350, 40);
 
         button1.setBackground(new java.awt.Color(0, 0, 0));
+        button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button1ActionPerformed(evt);
@@ -384,6 +414,9 @@ public class UI extends javax.swing.JFrame {
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonRegresar.PNG"))); // NOI18N
         jButton10.setText("Exit");
+        jButton10.setBorderPainted(false);
+        jButton10.setContentAreaFilled(false);
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -397,12 +430,11 @@ public class UI extends javax.swing.JFrame {
         jLabel5.setBounds(0, -30, 1390, 710);
 
         jButton11.setText("jButton11");
+        jButton11.setBorderPainted(false);
+        jButton11.setContentAreaFilled(false);
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         IngresarUsuario.add(jButton11);
         jButton11.setBounds(501, 463, 170, 60);
-
-        jButton12.setText("jButton12");
-        IngresarUsuario.add(jButton12);
-        jButton12.setBounds(560, 490, 81, 23);
 
         MainPanel.add(IngresarUsuario, "card2");
 
@@ -553,7 +585,8 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
         if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion1.getClientProperty("Valor"));
-        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+        
+        jProgressBar.setValue(gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
            
@@ -576,7 +609,8 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
          if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion2.getClientProperty("Valor"));
-        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+        
+        jProgressBar.setValue(gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
         
@@ -597,7 +631,8 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
          if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion3.getClientProperty("Valor"));
-        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+        
+        jProgressBar.setValue(gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
         
@@ -618,7 +653,8 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
          if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion4.getClientProperty("Valor"));
-        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+        
+        jProgressBar.setValue(gato.getPuntaje());
         
         Problema problema = this.problemaService.leerProblema();
         
@@ -648,7 +684,8 @@ private void updateScores(String usuario, int puntos) {
         MainPanel.revalidate();
 
         this.gato = Gato.getInstancia();
-        labelPuntaje.setText("Puntaje: " + gato.getPuntaje());
+        
+        jProgressBar.setValue(gato.getPuntaje());
 
         // TODO add your handling code here:
 
@@ -687,7 +724,6 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -704,13 +740,11 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelPuntaje;
+    private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private java.awt.Label labelPuntaje;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }
