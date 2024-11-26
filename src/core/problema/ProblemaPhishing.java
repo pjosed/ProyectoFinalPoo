@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class ProblemaPhishing extends Problema{
     
-    public ProblemaPhishing(String tipo, String textoProblema,ArrayList<Opcion> opciones) {
-        super(tipo, textoProblema, opciones);
+    public ProblemaPhishing(String tipo, ArrayList<Opcion> opciones) {
+        super(tipo, opciones);
     }
     
 }
