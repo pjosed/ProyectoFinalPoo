@@ -104,10 +104,12 @@ public class UI extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         IngresarUsuario = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
         textField1 = new java.awt.TextField();
-        button1 = new java.awt.Button();
         jButton10 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -371,23 +373,24 @@ public class UI extends javax.swing.JFrame {
         IngresarUsuario.setPreferredSize(new java.awt.Dimension(800, 600));
         IngresarUsuario.setLayout(null);
 
-        jLabel2.setText("Ingresa Tu Usuario");
-        IngresarUsuario.add(jLabel2);
-        jLabel2.setBounds(324, 119, 97, 16);
-
-        textField1.setText("textField1");
-        IngresarUsuario.add(textField1);
-        textField1.setBounds(324, 180, 97, 20);
-
-        button1.setLabel("Iniciar Juego");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonJugar_1.PNG"))); // NOI18N
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                jButton13ActionPerformed(evt);
             }
         });
-        IngresarUsuario.add(button1);
-        button1.setBounds(324, 249, 97, 24);
+        IngresarUsuario.add(jButton13);
+        jButton13.setBounds(500, 460, 160, 70);
 
+        textField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField1ActionPerformed(evt);
+            }
+        });
+        IngresarUsuario.add(textField1);
+        textField1.setBounds(670, 320, 350, 40);
+
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonRegresar.PNG"))); // NOI18N
         jButton10.setText("Exit");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -395,7 +398,19 @@ public class UI extends javax.swing.JFrame {
             }
         });
         IngresarUsuario.add(jButton10);
-        jButton10.setBounds(54, 54, 72, 23);
+        jButton10.setBounds(40, 30, 190, 70);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IngresarUsuario.gif"))); // NOI18N
+        IngresarUsuario.add(jLabel5);
+        jLabel5.setBounds(0, -30, 1390, 710);
+
+        jButton11.setText("jButton11");
+        IngresarUsuario.add(jButton11);
+        jButton11.setBounds(501, 463, 170, 60);
+
+        jButton12.setText("jButton12");
+        IngresarUsuario.add(jButton12);
+        jButton12.setBounds(560, 490, 81, 23);
 
         MainPanel.add(IngresarUsuario, "card2");
 
@@ -403,7 +418,7 @@ public class UI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,35 +465,6 @@ public class UI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        this.problemaService = new ProblemaServices(); 
-        MainPanel.removeAll();
-        MainPanel.add(Juego);
-        MainPanel.repaint();
-        MainPanel.revalidate();  
-        
-        this.gato = Gato.getInstancia();
-        labelPuntaje.setText("Puntaje: " + gato.getPuntaje());
-
-// TODO add your handling code here:
-
-        int id = 0; // ID seleccionado al azar
-        
-        Problema problema = problemaService.leerProblema();
-
-        Problem.setText(problema.getTextoProblema());
-        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
-
-        
-    }//GEN-LAST:event_button1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         System.out.println("Iniciando la aplicación..."); // Mensaje de prueba
@@ -658,6 +644,21 @@ private void updateScores(String usuario, int puntos) {
         }
     }//GEN-LAST:event_Opcion4ActionPerformed
 
+    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField1ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+                this.problemaService = new ProblemaServices(); 
+        MainPanel.removeAll();
+        MainPanel.add(Juego);
+        MainPanel.repaint();
+        MainPanel.revalidate();  
+        
+        this.gato = Gato.getInstancia();
+        labelPuntaje.setText("Puntaje: " + gato.getPuntaje());
+    }//GEN-LAST:event_jButton13ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Creditos;
@@ -672,10 +673,12 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JTextArea Problem;
     private javax.swing.JPanel Puntuaciones;
     private javax.swing.JPanel Tutorial;
-    private java.awt.Button button1;
     private javax.swing.JLabel gatoNormalLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -685,9 +688,9 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
