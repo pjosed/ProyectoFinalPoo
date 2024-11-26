@@ -13,11 +13,21 @@ public abstract class Problema {
     protected String tipo; // Puede haber otra enum de tipo problema en vez de que sea string
     protected ArrayList<Opcion> opciones;
 
-    public Problema(String tipo, ArrayList<Opcion> opciones) {
+    public String getTextoProblema() {
+        return textoProblema;
+    }
+
+    public void setTextoProblema(String textoProblema) {
+        this.textoProblema = textoProblema;
+    }
+    protected String textoProblema ;
+    
+
+    public Problema(String tipo, String textoProblema, ArrayList<Opcion> opciones) {
         this.tipo = tipo;
-        this.opciones = opciones;
-        
-        
+        this.opciones = opciones; 
+        this.textoProblema = textoProblema;
+
     }
 
     public String getTipo() {
@@ -47,3 +57,6 @@ public abstract class Problema {
     
     
 }
+
+
+

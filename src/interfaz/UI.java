@@ -1,6 +1,7 @@
 package interfaz;
 
 import core.Gato;
+import core.Services.ProblemaServices;
 import core.problema.Problema;
 import java.awt.event.ActionEvent;
 import java.util.Vector;
@@ -41,8 +42,12 @@ public class UI extends javax.swing.JFrame {
      * Creates new form UI
      */
     
+        private ProblemaServices problemaService ;
+    private Gato gato ;
      public UI() {
         System.out.println("Inicio UI");
+        this.problemaService = new ProblemaServices();
+        this.gato = Gato.getInstancia();
         initComponents();
         MainPanel.removeAll();
         MainPanel.add(Inicio);
@@ -518,14 +523,21 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-     MainPanel.removeAll();
+        this.problemaService = new ProblemaServices(); 
+        MainPanel.removeAll();
         MainPanel.add(Juego);
         MainPanel.repaint();
-        MainPanel.revalidate();     // TODO add your handling code here:
+        MainPanel.revalidate();  
+        
+        this.gato = Gato.getInstancia();
+        labelPuntaje.setText("Puntaje: " + gato.getPuntaje());
+
+// TODO add your handling code here:
 
         int id = 0; // ID seleccionado al azar
         
-        
+        Problema problema = problemaService.leerProblema();
+
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
         Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
@@ -636,7 +648,8 @@ private void updateScores(String usuario, int puntos) {
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion1.getClientProperty("Valor"));
         labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
         
-        
+        Problema problema = this.problemaService.leerProblema();
+           
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
         Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
