@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import org.apache.poi.ss.usermodel.*;
 import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
 import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
@@ -525,99 +526,15 @@ public class UI extends javax.swing.JFrame {
         int id = 0; // ID seleccionado al azar
         
         
-        ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
-        
-        
-        
-      
-                Gato gato = Gato.getInstancia();
-                
-                
-                // Cambiar el texto de la JLabel
-                labelPuntaje.setText("Puntaje: " + gato.getPuntaje());
-
-                // Revalidar y repintar el panel para reflejar el cambio visualmente
-                jPanelPuntaje.revalidate();
-                jPanelPuntaje.repaint();
-                Juego.revalidate();
-                Juego.repaint();
-
-        // Leer la hoja 1 y seleccionar una fila aleatoria
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la primera hoja (Hoja 1)
-            Sheet sheet = workbook.getSheetAt(0);
-
-            // Calcular el total de filas
-            int totalRows = sheet.getPhysicalNumberOfRows();
-
-            // Generar un índice aleatorio (excluyendo la fila de encabezado)
-            Random random = new Random();
-            int randomRowIndex = random.nextInt(totalRows - 1) + 1; // Índice aleatorio desde la segunda fila
-
-            // Obtener la fila aleatoria
-            Row randomRow = sheet.getRow(randomRowIndex);
-
-            // Establecer el valor en el JTextArea (o JLabel) llamado Problem
-            Problem.setText(randomRow.getCell(1).getStringCellValue());
-
-            // Obtener el ID (columna 2) y convertirlo a entero
-            id = (int) randomRow.getCell(2).getNumericCellValue();
-            System.out.println("ID seleccionado: " + id);
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Leer la hoja 2 y buscar las opciones asociadas al ID
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la segunda hoja (Hoja 2)
-            Sheet sheet = workbook.getSheetAt(1);
-
-            // Iterar sobre las filas de la hoja 2
-            for (Row row : sheet) {
-                if (row.getRowNum() != 0){
-                  if (  row.getCell(0) != null && (int)row.getCell(0).getNumericCellValue() == id) {
-                    // Agregar la opción (columna 1) a la lista
-                    strings.add(row.getCell(1).getStringCellValue());
-                    
-                }
-                    
-                }
-                
-
-            }
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Establecer las opciones en los JTextFields (o JLabel)
-        if (strings.size() >= 4) {
-            Opcion1.setText(strings.get(0));
-            Opcion2.setText(strings.get(1));
-            Opcion3.setText(strings.get(2));
-            Opcion4.setText(strings.get(3));
-        } else {
-            System.out.println("Error: No hay suficientes opciones para mostrar.");
-        }
-    
-
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
 
         
     }//GEN-LAST:event_button1ActionPerformed
@@ -715,325 +632,88 @@ private void updateScores(String usuario, int puntos) {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
- int id = 0; // ID seleccionado al azar
-        ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
-
+        if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion1.getClientProperty("Valor"));
+        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
         
         
-        // Leer la hoja 1 y seleccionar una fila aleatoria
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la primera hoja (Hoja 1)
-            Sheet sheet = workbook.getSheetAt(0);
-
-            // Calcular el total de filas
-            int totalRows = sheet.getPhysicalNumberOfRows();
-
-            // Generar un índice aleatorio (excluyendo la fila de encabezado)
-            Random random = new Random();
-            int randomRowIndex = random.nextInt(totalRows - 1) + 1; // Índice aleatorio desde la segunda fila
-
-            // Obtener la fila aleatoria
-            Row randomRow = sheet.getRow(randomRowIndex);
-
-            // Establecer el valor en el JTextArea (o JLabel) llamado Problem
-            Problem.setText(randomRow.getCell(1).getStringCellValue());
-
-            // Obtener el ID (columna 2) y convertirlo a entero
-            id = (int) randomRow.getCell(2).getNumericCellValue();
-            System.out.println("ID seleccionado: " + id);
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
         }
-
-        // Leer la hoja 2 y buscar las opciones asociadas al ID
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la segunda hoja (Hoja 2)
-            Sheet sheet = workbook.getSheetAt(1);
-
-            // Iterar sobre las filas de la hoja 2
-            for (Row row : sheet) {
-                if (row.getRowNum() != 0){
-                  if (  row.getCell(0) != null && (int)row.getCell(0).getNumericCellValue() == id) {
-                    // Agregar la opción (columna 1) a la lista
-                    strings.add(row.getCell(1).getStringCellValue());
-                }
-                    
-                }
-                
-
-            }
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Establecer las opciones en los JTextFields (o JLabel)
-        if (strings.size() >= 4) {
-            Opcion1.setText(strings.get(0));
-            Opcion2.setText(strings.get(1));
-            Opcion3.setText(strings.get(2));
-            Opcion4.setText(strings.get(3));
-        } else {
-            System.out.println("Error: No hay suficientes opciones para mostrar.");
-        }
-            // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_Opcion1ActionPerformed
 
     private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
- int id = 0; // ID seleccionado al azar
-        ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
-
-        // Leer la hoja 1 y seleccionar una fila aleatoria
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la primera hoja (Hoja 1)
-            Sheet sheet = workbook.getSheetAt(0);
-
-            // Calcular el total de filas
-            int totalRows = sheet.getPhysicalNumberOfRows();
-
-            // Generar un índice aleatorio (excluyendo la fila de encabezado)
-            Random random = new Random();
-            int randomRowIndex = random.nextInt(totalRows - 1) + 1; // Índice aleatorio desde la segunda fila
-
-            // Obtener la fila aleatoria
-            Row randomRow = sheet.getRow(randomRowIndex);
-
-            // Establecer el valor en el JTextArea (o JLabel) llamado Problem
-            Problem.setText(randomRow.getCell(1).getStringCellValue());
-
-            // Obtener el ID (columna 2) y convertirlo a entero
-            id = (int) randomRow.getCell(2).getNumericCellValue();
-            System.out.println("ID seleccionado: " + id);
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+         if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion2.getClientProperty("Valor"));
+        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+        
+        Problema problema = this.problemaService.leerProblema();
+        
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+         }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
         }
-
-        // Leer la hoja 2 y buscar las opciones asociadas al ID
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la segunda hoja (Hoja 2)
-            Sheet sheet = workbook.getSheetAt(1);
-
-            // Iterar sobre las filas de la hoja 2
-            for (Row row : sheet) {
-                if (row.getRowNum() != 0){
-                  if (  row.getCell(0) != null && (int)row.getCell(0).getNumericCellValue() == id) {
-                    // Agregar la opción (columna 1) a la lista
-                    strings.add(row.getCell(1).getStringCellValue());
-                }
-                    
-                }
-                
-
-            }
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Establecer las opciones en los JTextFields (o JLabel)
-        if (strings.size() >= 4) {
-            Opcion1.setText(strings.get(0));
-            Opcion2.setText(strings.get(1));
-            Opcion3.setText(strings.get(2));
-            Opcion4.setText(strings.get(3));
-        } else {
-            System.out.println("Error: No hay suficientes opciones para mostrar.");
-        }
-            // TODO add your handling code here:
     }//GEN-LAST:event_Opcion2ActionPerformed
 
     private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
- int id = 0; // ID seleccionado al azar
-        ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
-
-        // Leer la hoja 1 y seleccionar una fila aleatoria
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la primera hoja (Hoja 1)
-            Sheet sheet = workbook.getSheetAt(0);
-
-            // Calcular el total de filas
-            int totalRows = sheet.getPhysicalNumberOfRows();
-
-            // Generar un índice aleatorio (excluyendo la fila de encabezado)
-            Random random = new Random();
-            int randomRowIndex = random.nextInt(totalRows - 1) + 1; // Índice aleatorio desde la segunda fila
-
-            // Obtener la fila aleatoria
-            Row randomRow = sheet.getRow(randomRowIndex);
-
-            // Establecer el valor en el JTextArea (o JLabel) llamado Problem
-            Problem.setText(randomRow.getCell(1).getStringCellValue());
-
-            // Obtener el ID (columna 2) y convertirlo a entero
-            id = (int) randomRow.getCell(2).getNumericCellValue();
-            System.out.println("ID seleccionado: " + id);
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+         if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion3.getClientProperty("Valor"));
+        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+        
+        Problema problema = this.problemaService.leerProblema();
+        
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+         }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
         }
-
-        // Leer la hoja 2 y buscar las opciones asociadas al ID
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la segunda hoja (Hoja 2)
-            Sheet sheet = workbook.getSheetAt(1);
-
-            // Iterar sobre las filas de la hoja 2
-            for (Row row : sheet) {
-                if (row.getRowNum() != 0){
-                  if (  row.getCell(0) != null && (int)row.getCell(0).getNumericCellValue() == id) {
-                    // Agregar la opción (columna 1) a la lista
-                    strings.add(row.getCell(1).getStringCellValue());
-                }
-                    
-                }
-                
-
-            }
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Establecer las opciones en los JTextFields (o JLabel)
-        if (strings.size() >= 4) {
-            Opcion1.setText(strings.get(0));
-            Opcion2.setText(strings.get(1));
-            Opcion3.setText(strings.get(2));
-            Opcion4.setText(strings.get(3));
-        } else {
-            System.out.println("Error: No hay suficientes opciones para mostrar.");
-        }
-            // TODO add your handling code here:
     }//GEN-LAST:event_Opcion3ActionPerformed
 
     private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
- int id = 0; // ID seleccionado al azar
-        ArrayList<String> strings = new ArrayList<>(); // Lista para almacenar las cadenas de la hoja 2
-
-        // Leer la hoja 1 y seleccionar una fila aleatoria
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la primera hoja (Hoja 1)
-            Sheet sheet = workbook.getSheetAt(0);
-
-            // Calcular el total de filas
-            int totalRows = sheet.getPhysicalNumberOfRows();
-
-            // Generar un índice aleatorio (excluyendo la fila de encabezado)
-            Random random = new Random();
-            int randomRowIndex = random.nextInt(totalRows - 1) + 1; // Índice aleatorio desde la segunda fila
-
-            // Obtener la fila aleatoria
-            Row randomRow = sheet.getRow(randomRowIndex);
-
-            // Establecer el valor en el JTextArea (o JLabel) llamado Problem
-            Problem.setText(randomRow.getCell(1).getStringCellValue());
-
-            // Obtener el ID (columna 2) y convertirlo a entero
-            id = (int) randomRow.getCell(2).getNumericCellValue();
-            System.out.println("ID seleccionado: " + id);
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+         if(this.problemaService.lessThanFive()){
+        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion4.getClientProperty("Valor"));
+        labelPuntaje.setText("Puntaje: " + this.gato.getPuntaje());
+        
+        Problema problema = this.problemaService.leerProblema();
+        
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+         }else{
+            JOptionPane.showMessageDialog(null, "Se acabo");
         }
-
-        // Leer la hoja 2 y buscar las opciones asociadas al ID
-        try {
-            // Abrir el archivo Excel
-            FileInputStream fis = new FileInputStream(new File("src/files/BD.xlsx"));
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            // Obtener la segunda hoja (Hoja 2)
-            Sheet sheet = workbook.getSheetAt(1);
-
-            // Iterar sobre las filas de la hoja 2
-            for (Row row : sheet) {
-                if (row.getRowNum() != 0){
-                  if (  row.getCell(0) != null && (int)row.getCell(0).getNumericCellValue() == id) {
-                    // Agregar la opción (columna 1) a la lista
-                    strings.add(row.getCell(1).getStringCellValue());
-                }
-                    
-                }
-                
-
-            }
-
-            // Cerrar recursos
-            workbook.close();
-            fis.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Establecer las opciones en los JTextFields (o JLabel)
-        if (strings.size() >= 4) {
-            Opcion1.setText(strings.get(0));
-            Opcion2.setText(strings.get(1));
-            Opcion3.setText(strings.get(2));
-            Opcion4.setText(strings.get(3));
-        } else {
-            System.out.println("Error: No hay suficientes opciones para mostrar.");
-        }
-            // TODO add your handling code here:
     }//GEN-LAST:event_Opcion4ActionPerformed
 
 
