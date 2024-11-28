@@ -30,6 +30,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip; 
 import java.io.InputStream;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 
 
@@ -208,7 +209,6 @@ public class UI extends javax.swing.JFrame {
         ));
         jTable.setRowHeight(35);
         jTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        jTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(jTable);
 
         Puntuaciones.add(jScrollPane2);
@@ -241,9 +241,8 @@ public class UI extends javax.swing.JFrame {
         jPanel3.setLayout(null);
 
         gatoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        gatoLabel.setText("Gatoo");
         jPanel3.add(gatoLabel);
-        gatoLabel.setBounds(510, 550, 70, 40);
+        gatoLabel.setBounds(470, 420, 230, 220);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton5.setText("Salir");
@@ -731,17 +730,19 @@ private void updateScores(String usuario, int puntos) {
     private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
-
+    
+    private final ImageIcon gatoFeliz = new ImageIcon("src/files/GatoFeliz.png");
+    private final ImageIcon gatoNormal = new ImageIcon("src/files/GatoNormal.png");
+    private final ImageIcon gatoTriste = new ImageIcon("src/files/GatoTriste.png");
     
     private void PonerGato(){
-        this.gato = Gato.getInstancia();
-        
+        this.gato = Gato.getInstancia();      
         if(gato.getEstadoAnimo()== EstadoAnimo.feliz){
-            gatoLabel.setText("Gato Feliz");
+            gatoLabel.setIcon(gatoFeliz);
         }else if(gato.getEstadoAnimo()== EstadoAnimo.normal){
-            gatoLabel.setText("Gato Normal");
+            gatoLabel.setIcon(gatoNormal);
         }else if(gato.getEstadoAnimo()== EstadoAnimo.triste){
-            gatoLabel.setText("Gato Triste");
+            gatoLabel.setIcon(gatoTriste);
         }
     }
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
