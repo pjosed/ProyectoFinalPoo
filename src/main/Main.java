@@ -10,6 +10,7 @@ public class Main {
         ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
+
         
         
     });

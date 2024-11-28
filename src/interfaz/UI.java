@@ -4,26 +4,18 @@ import core.EstadoAnimo;
 import core.Gato;
 import core.Services.ProblemaServices;
 import core.problema.Problema;
-import java.awt.event.ActionEvent;
 import java.util.Vector;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;
 import org.apache.poi.ss.usermodel.*;
-import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
-import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
-import static org.apache.poi.ss.usermodel.CellType.STRING;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import javax.sound.sampled.AudioInputStream;
@@ -81,6 +73,7 @@ public class UI extends javax.swing.JFrame {
 
         MainPanel = new javax.swing.JPanel();
         Inicio = new javax.swing.JPanel();
+        botonSonar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -123,6 +116,15 @@ public class UI extends javax.swing.JFrame {
 
         Inicio.setPreferredSize(new java.awt.Dimension(1152, 648));
         Inicio.setLayout(null);
+
+        botonSonar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotonMusica.png"))); // NOI18N
+        botonSonar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSonarActionPerformed(evt);
+            }
+        });
+        Inicio.add(botonSonar);
+        botonSonar.setBounds(1080, 10, 56, 40);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonIniciar.PNG"))); // NOI18N
         jButton1.setText("Iniciar");
@@ -895,6 +897,36 @@ public class UI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void botonSonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSonarActionPerformed
+        try { 
+            if (clip == null) { 
+                // Cargar el archivo de audio desde los recursos del proyecto 
+                InputStream audioSrc = getClass().getResourceAsStream("/files/HoldingOutForAHero.wav"); 
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioSrc); 
+
+                // Crear un clip para reproducir el audio 
+                clip = AudioSystem.getClip(); 
+                clip.open(audioStream); 
+            }
+
+            if (isPlaying) { 
+                // Pausar el audio 
+                pausePosition = clip.getFramePosition(); 
+                clip.stop(); 
+            } else { 
+                // Reanudar el audio desde la posición pausada 
+                clip.setFramePosition(pausePosition); 
+                clip.start(); 
+            } 
+            // Cambiar el estado del audio 
+            isPlaying = !isPlaying; 
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        }
+    
+
+    }//GEN-LAST:event_botonSonarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Creditos;
@@ -910,6 +942,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel Puntuaciones;
     private javax.swing.JTable Ranking;
     private javax.swing.JPanel Tutorial;
+    private javax.swing.JButton botonSonar;
     private javax.swing.JLabel gatoLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
