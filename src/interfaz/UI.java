@@ -29,6 +29,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem; 
 import javax.sound.sampled.Clip; 
 import java.io.InputStream;
+import java.util.List;
 
 
 
@@ -558,6 +559,40 @@ private void updateScores(String usuario, int puntos) {
     Puntuaciones.setLayout(null);
     Puntuaciones.removeAll(); // Limpiar panel antes de agregar componentes
     Puntuaciones.add(scrollPane);
+}
+    
+    private void updateScoresFromExcel() {
+    try (InputStream inputStream = new FileInputStream("src/files/Ranking.xlsx")) {
+        Workbook workbook = new XSSFWorkbook(inputStream);
+        Sheet sheet = workbook.getSheetAt(0); // Usamos la primera hoja
+        
+        // Leer los datos existentes en la hoja
+        List<String[]> rows = new ArrayList<>();
+        for (Row row : sheet) {
+            if (row.getRowNum() == 0) continue; // Salta la fila del encabezado
+            String usuario = row.getCell(0).getStringCellValue();
+            int puntos = (int) row.getCell(1).getNumericCellValue();
+            rows.add(new String[]{usuario, String.valueOf(puntos)});
+        }
+        
+        // Agregar las filas leídas al modelo de la tabla
+        for (String[] row : rows) {
+            tableModel.addRow(row);
+        }
+        
+        // Ordenar la tabla de puntuaciones
+        tableModel.getDataVector().sort((o1, o2) -> {
+            int points1 = (int) ((Vector<?>) o1).get(1);
+            int points2 = (int) ((Vector<?>) o2).get(1);
+            return Integer.compare(points2, points1); // Ordenar descendente
+        });
+        
+        tableModel.fireTableDataChanged(); // Notificar cambios en los datos
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
