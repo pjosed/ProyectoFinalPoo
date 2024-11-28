@@ -685,22 +685,26 @@ public class UI extends javax.swing.JFrame {
             this.gato.cambiarEstado();
             jProgressBar.setValue(gato.getPuntaje());
             PonerGato();
-            Problema problema = this.problemaService.leerProblema();
+           Problema problema = problemaService.leerProblema();
 
-            Problem.setText(problema.getTextoProblema());
-            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion1.putClientProperty("Explanation", problema.getOpciones().get(0).getExplicacion());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion2.putClientProperty("Explanation", problema.getOpciones().get(1).getExplicacion());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion3.putClientProperty("Explanation", problema.getOpciones().get(2).getExplicacion());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Opcion4.putClientProperty("Explanation", problema.getOpciones().get(3).getExplicacion());
         } else {
-            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
 
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
             CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
+            gato.setPuntaje(500);
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
                 UI ui = new UI();
@@ -722,22 +726,27 @@ public class UI extends javax.swing.JFrame {
             this.gato.cambiarEstado();
             jProgressBar.setValue(gato.getPuntaje());
             PonerGato();
-            Problema problema = this.problemaService.leerProblema();
+           Problema problema = problemaService.leerProblema();
 
-            Problem.setText(problema.getTextoProblema());
-            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion1.putClientProperty("Explanation", problema.getOpciones().get(0).getExplicacion());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion2.putClientProperty("Explanation", problema.getOpciones().get(1).getExplicacion());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion3.putClientProperty("Explanation", problema.getOpciones().get(2).getExplicacion());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Opcion4.putClientProperty("Explanation", problema.getOpciones().get(3).getExplicacion());
         } else {
             JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
 
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
             CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
+            gato.setPuntaje(500);
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
                 UI ui = new UI();
@@ -751,29 +760,33 @@ public class UI extends javax.swing.JFrame {
 
     private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
         if (this.problemaService.lessThanFive()) {
-            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
-
             JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion3.getClientProperty("Explanation"));
+
+          
 
             this.gato.setPuntaje((int) this.gato.getPuntaje() + (int) Opcion3.getClientProperty("Valor"));
             this.gato.cambiarEstado();
             jProgressBar.setValue(gato.getPuntaje());
             PonerGato();
-            Problema problema = this.problemaService.leerProblema();
+            Problema problema = problemaService.leerProblema();
 
-            Problem.setText(problema.getTextoProblema());
-            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion1.putClientProperty("Explanation", problema.getOpciones().get(0).getExplicacion());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion2.putClientProperty("Explanation", problema.getOpciones().get(1).getExplicacion());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion3.putClientProperty("Explanation", problema.getOpciones().get(2).getExplicacion());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Opcion4.putClientProperty("Explanation", problema.getOpciones().get(3).getExplicacion());
         } else {
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
             CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
-
+            gato.setPuntaje(500);
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
                 UI ui = new UI();
@@ -787,8 +800,7 @@ public class UI extends javax.swing.JFrame {
 
     private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
         if (this.problemaService.lessThanFive()) {
-            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
-
+         
             JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion4.getClientProperty("Explanation"));
 
             this.gato.setPuntaje((int) this.gato.getPuntaje() + (int) Opcion4.getClientProperty("Valor"));
@@ -797,19 +809,23 @@ public class UI extends javax.swing.JFrame {
             PonerGato();
             Problema problema = this.problemaService.leerProblema();
 
-            Problem.setText(problema.getTextoProblema());
-            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+             Problem.setText(problema.getTextoProblema());
+        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion1.putClientProperty("Explanation", problema.getOpciones().get(0).getExplicacion());
+        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion2.putClientProperty("Explanation", problema.getOpciones().get(1).getExplicacion());
+        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion3.putClientProperty("Explanation", problema.getOpciones().get(2).getExplicacion());
+        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Opcion4.putClientProperty("Explanation", problema.getOpciones().get(3).getExplicacion());
         } else {
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
             CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
-
+            gato.setPuntaje(500);
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
                 UI ui = new UI();
