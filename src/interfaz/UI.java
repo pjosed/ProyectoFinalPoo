@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,21 +26,22 @@ import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
 import static org.apache.poi.ss.usermodel.CellType.STRING;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import javax.sound.sampled.AudioInputStream; 
-import javax.sound.sampled.AudioSystem; 
-import javax.sound.sampled.Clip; 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-
-
-
+import javax.swing.RowSorter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author arang
@@ -49,11 +51,11 @@ public class UI extends javax.swing.JFrame {
     /**
      * Creates new form UI
      */
-    
-        private ProblemaServices problemaService ;
-        private Gato gato ;
-        private String nickname = null;
-     public UI() {
+    private ProblemaServices problemaService;
+    private Gato gato;
+    private String nickname = null;
+
+    public UI() {
         System.out.println("Inicio UI");
         this.problemaService = new ProblemaServices();
         this.gato = Gato.getInstancia();
@@ -61,17 +63,13 @@ public class UI extends javax.swing.JFrame {
         MainPanel.removeAll();
         MainPanel.add(Inicio);
         MainPanel.repaint();
-        MainPanel.revalidate();  
-        
-        
-        
+        MainPanel.revalidate();
+
     }
 
-      private Clip clip; 
-      private boolean isPlaying = false; 
-      private int pausePosition = 0;  
-        
-    
+    private Clip clip;
+    private boolean isPlaying = false;
+    private int pausePosition = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,7 +88,7 @@ public class UI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Puntuaciones = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        Ranking = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         Juego = new javax.swing.JPanel();
@@ -187,29 +185,39 @@ public class UI extends javax.swing.JFrame {
         Puntuaciones.setPreferredSize(new java.awt.Dimension(800, 600));
         Puntuaciones.setLayout(null);
 
-        jTable.setBackground(new java.awt.Color(0, 0, 0));
-        jTable.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
-        jTable.setForeground(new java.awt.Color(255, 255, 255));
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        Ranking.setBackground(new java.awt.Color(0, 0, 0));
+        Ranking.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
+        Ranking.setForeground(new java.awt.Color(255, 255, 255));
+        Ranking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Usuario", "Puntaje"
             }
-        ));
-        jTable.setRowHeight(35);
-        jTable.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        jScrollPane2.setViewportView(jTable);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Ranking.setRowHeight(35);
+        Ranking.setSelectionBackground(new java.awt.Color(102, 102, 255));
+        jScrollPane2.setViewportView(Ranking);
+        if (Ranking.getColumnModel().getColumnCount() > 0) {
+            Ranking.getColumnModel().getColumn(0).setResizable(false);
+            Ranking.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         Puntuaciones.add(jScrollPane2);
         jScrollPane2.setBounds(150, 130, 770, 370);
@@ -466,30 +474,30 @@ public class UI extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    MainPanel.removeAll();
+        MainPanel.removeAll();
         MainPanel.add(Creditos);
         MainPanel.repaint();
         MainPanel.revalidate();          // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            MainPanel.removeAll();
+        MainPanel.removeAll();
         MainPanel.add(Tutorial);
         MainPanel.repaint();
-        MainPanel.revalidate();  
-         JTextArea tutorialText = new JTextArea(
-        "En este juego debes ayudar al gato, Mr Microfost, a través de diversas situaciones que pondrán a prueba su nivel de ánimo. \n\n"
-        + "Jugarás 5 rondas, y por cada ronda verás una situación relacionada a los riesgos informáticos a los cuáles se enfrentará Mr Microfost y por la cuál tú, debes escoger la mejor opción para ayudarlo a lidiar con ella.\n\n"
-        + "No existe una respuesta correcta o incorrecta, simplemente respuestas más o menos adecuadas según el contexto. Por cada opción elevarás en una cierta cantidad el estado de ánimo de Mr Microfost, y tu objetivo es mantenerlo mayor o igual al 60%. Dependiendo de qué tan alto mantengas su nivel de ánimo hacia el final del juego, lograrás una mayor puntuación.\n\n"
-        + "¡Buena suerte!"
-    );
-    tutorialText.setLineWrap(true);
-    tutorialText.setWrapStyleWord(true);
-    tutorialText.setEditable(false);
-    Tutorial.add(tutorialText);  // Agregar el texto al panel Tutorial
+        MainPanel.revalidate();
+        JTextArea tutorialText = new JTextArea(
+                "En este juego debes ayudar al gato, Mr Microfost, a través de diversas situaciones que pondrán a prueba su nivel de ánimo. \n\n"
+                + "Jugarás 5 rondas, y por cada ronda verás una situación relacionada a los riesgos informáticos a los cuáles se enfrentará Mr Microfost y por la cuál tú, debes escoger la mejor opción para ayudarlo a lidiar con ella.\n\n"
+                + "No existe una respuesta correcta o incorrecta, simplemente respuestas más o menos adecuadas según el contexto. Por cada opción elevarás en una cierta cantidad el estado de ánimo de Mr Microfost, y tu objetivo es mantenerlo mayor o igual al 60%. Dependiendo de qué tan alto mantengas su nivel de ánimo hacia el final del juego, lograrás una mayor puntuación.\n\n"
+                + "¡Buena suerte!"
+        );
+        tutorialText.setLineWrap(true);
+        tutorialText.setWrapStyleWord(true);
+        tutorialText.setEditable(false);
+        Tutorial.add(tutorialText);  // Agregar el texto al panel Tutorial
 
-    tutorialText.setBounds(20, 20, 540, 300); // Ajustar tamaño y posición
-    Tutorial.setLayout(null); // Asegurar diseño absoluto
+        tutorialText.setBounds(20, 20, 540, 300); // Ajustar tamaño y posición
+        Tutorial.setLayout(null); // Asegurar diseño absoluto
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -497,100 +505,131 @@ public class UI extends javax.swing.JFrame {
         MainPanel.add(IngresarUsuario);
         MainPanel.repaint();
         MainPanel.revalidate();     // TODO add your handling code here:
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-    java.awt.EventQueue.invokeLater(() -> {
-        this.dispose();
-        UI ui = new UI();
-        ui.setSize(1152, 690);
-        ui.setLocationRelativeTo(null);
-        ui.setVisible(true);
-        
-    });
+
+        java.awt.EventQueue.invokeLater(() -> {
+            this.dispose();
+            UI ui = new UI();
+            ui.setSize(1152, 690);
+            ui.setLocationRelativeTo(null);
+            ui.setVisible(true);
+
+        });
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    MainPanel.removeAll();
+        MainPanel.removeAll();
         MainPanel.add(Puntuaciones);
         MainPanel.repaint();
-        MainPanel.revalidate();     
-        
+        MainPanel.revalidate();
+
         // Cambiar apariencia del encabezado
-        JTableHeader header = jTable.getTableHeader();
+        JTableHeader header = Ranking.getTableHeader();
+
+        DefaultTableModel model = (DefaultTableModel) Ranking.getModel();
+
+        try (FileInputStream file = new FileInputStream(new File("src/files/Ranking.xlsx")); Workbook workbook = new XSSFWorkbook(file)) {
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            for (Row row : sheet) {
+                Cell cell1 = row.getCell(0); // Columna 1
+                Cell cell2 = row.getCell(1); // Columna 2
+                Object[] fila = {
+                    cell1.getStringCellValue(),
+                    cell2.getNumericCellValue()
+                };
+
+                model.addRow(fila);
+
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Crear un TableRowSorter para ordenar las filas
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        Ranking.setRowSorter(sorter);
+
+        // Configurar la ordenación por la segunda columna (Puntaje) en orden descendente
+        sorter.setSortKeys(java.util.Collections.singletonList(
+                new RowSorter.SortKey(1, javax.swing.SortOrder.DESCENDING))); // Orden descendente
+
         header.setBackground(java.awt.Color.BLACK); // Fondo del encabezado
         header.setForeground(java.awt.Color.WHITE); // Texto del encabezado
         header.setFont(new java.awt.Font("Rockwell Extra Bold", java.awt.Font.BOLD, 16)); // Fuente del encabezado
-        
-        
+
     }
-        private DefaultTableModel tableModel; // Declarar el modelo de tabla como variable global
+    private DefaultTableModel tableModel; // Declarar el modelo de tabla como variable global
 
-private void initializeScoreTable() {
-    // Inicializar el modelo de tabla
-    String[] columnNames = {"Usuario", "Puntos"};
-    tableModel = new DefaultTableModel(columnNames, 0);
-}
+    private void initializeScoreTable() {
+        // Inicializar el modelo de tabla
+        String[] columnNames = {"Usuario", "Puntos"};
+        tableModel = new DefaultTableModel(columnNames, 0);
+    }
 
-private void updateScores(String usuario, int puntos) {
-    // Agregar nuevos datos de puntuaciones
-    tableModel.addRow(new Object[]{usuario, puntos});
+    private void updateScores(String usuario, int puntos) {
+        // Agregar nuevos datos de puntuaciones
+        tableModel.addRow(new Object[]{usuario, puntos});
 
-    // Ordenar la tabla de puntuaciones de mayor a menor
-    tableModel.getDataVector().sort((o1, o2) -> {
-        int points1 = (int) ((Vector<?>) o1).get(1);
-        int points2 = (int) ((Vector<?>) o2).get(1);
-        return Integer.compare(points2, points1); // Ordenar descendente
-    });
-    tableModel.fireTableDataChanged(); // Notificar cambios en los datos
-    
-    JTable table = new JTable(tableModel);
-    table.setEnabled(false); // Deshabilitar edición
-
-    JScrollPane scrollPane = new JScrollPane(table); // Agregar scroll a la tabla
-    scrollPane.setBounds(20, 20, 300, 150); // Posición y tamaño del scroll pane
-
-    Puntuaciones.setLayout(null);
-    Puntuaciones.removeAll(); // Limpiar panel antes de agregar componentes
-    Puntuaciones.add(scrollPane);
-}
-    
-    private void updateScoresFromExcel() {
-    try (InputStream inputStream = new FileInputStream("src/files/Ranking.xlsx")) {
-        Workbook workbook = new XSSFWorkbook(inputStream);
-        Sheet sheet = workbook.getSheetAt(0); // Usamos la primera hoja
-        
-        // Leer los datos existentes en la hoja
-        List<String[]> rows = new ArrayList<>();
-        for (Row row : sheet) {
-            if (row.getRowNum() == 0) continue; // Salta la fila del encabezado
-            String usuario = row.getCell(0).getStringCellValue();
-            int puntos = (int) row.getCell(1).getNumericCellValue();
-            rows.add(new String[]{usuario, String.valueOf(puntos)});
-        }
-        
-        // Agregar las filas leídas al modelo de la tabla
-        for (String[] row : rows) {
-            tableModel.addRow(row);
-        }
-        
-        // Ordenar la tabla de puntuaciones
+        // Ordenar la tabla de puntuaciones de mayor a menor
         tableModel.getDataVector().sort((o1, o2) -> {
             int points1 = (int) ((Vector<?>) o1).get(1);
             int points2 = (int) ((Vector<?>) o2).get(1);
             return Integer.compare(points2, points1); // Ordenar descendente
         });
-        
         tableModel.fireTableDataChanged(); // Notificar cambios en los datos
-    } catch (IOException e) {
-        e.printStackTrace();
+
+        JTable table = new JTable(tableModel);
+        table.setEnabled(false); // Deshabilitar edición
+
+        JScrollPane scrollPane = new JScrollPane(table); // Agregar scroll a la tabla
+        scrollPane.setBounds(20, 20, 300, 150); // Posición y tamaño del scroll pane
+
+        Puntuaciones.setLayout(null);
+        Puntuaciones.removeAll(); // Limpiar panel antes de agregar componentes
+        Puntuaciones.add(scrollPane);
     }
 
+    private void updateScoresFromExcel() {
+        try (InputStream inputStream = new FileInputStream("src/files/Ranking.xlsx")) {
+            Workbook workbook = new XSSFWorkbook(inputStream);
+            Sheet sheet = workbook.getSheetAt(0); // Usamos la primera hoja
+
+            // Leer los datos existentes en la hoja
+            List<String[]> rows = new ArrayList<>();
+            for (Row row : sheet) {
+                if (row.getRowNum() == 0) {
+                    continue; // Salta la fila del encabezado
+                }
+                String usuario = row.getCell(0).getStringCellValue();
+                int puntos = (int) row.getCell(1).getNumericCellValue();
+                rows.add(new String[]{usuario, String.valueOf(puntos)});
+            }
+
+            // Agregar las filas leídas al modelo de la tabla
+            for (String[] row : rows) {
+                tableModel.addRow(row);
+            }
+
+            // Ordenar la tabla de puntuaciones
+            tableModel.getDataVector().sort((o1, o2) -> {
+                int points1 = (int) ((Vector<?>) o1).get(1);
+                int points2 = (int) ((Vector<?>) o2).get(1);
+                return Integer.compare(points2, points1); // Ordenar descendente
+            });
+
+            tableModel.fireTableDataChanged(); // Notificar cambios en los datos
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -606,147 +645,196 @@ private void updateScores(String usuario, int puntos) {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        
-    
+
         this.dispose();
         UI ui = new UI();
         ui.setSize(1152, 660);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
-               // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-      
+
         this.dispose();
         UI ui = new UI();
         ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
-                 // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-      
-    
+
         this.dispose();
         UI ui = new UI();
         ui.setSize(1152, 690);
         ui.setLocationRelativeTo(null);
         ui.setVisible(true);
-                 // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
-        if(this.problemaService.lessThanFive()){
-        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion1.getClientProperty("Valor"));
-        this.gato.cambiarEstado();
-        jProgressBar.setValue(gato.getPuntaje());
-        PonerGato();
-        Problema problema = this.problemaService.leerProblema();
-           
-        Problem.setText(problema.getTextoProblema());
-        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
-        }else{
-            JOptionPane.showMessageDialog(null, "Se acabo");
+        if (this.problemaService.lessThanFive()) {
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
+            this.gato.setPuntaje((int) this.gato.getPuntaje() + (int) Opcion1.getClientProperty("Valor"));
+            this.gato.cambiarEstado();
+            jProgressBar.setValue(gato.getPuntaje());
+            PonerGato();
+            Problema problema = this.problemaService.leerProblema();
+
+            Problem.setText(problema.getTextoProblema());
+            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        } else {
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
+
+            JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
+
+            java.awt.EventQueue.invokeLater(() -> {
+                this.dispose();
+                UI ui = new UI();
+                ui.setSize(1152, 690);
+                ui.setLocationRelativeTo(null);
+                ui.setVisible(true);
+
+            });
         }
-        
-        
+
+
     }//GEN-LAST:event_Opcion1ActionPerformed
 
     private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
-         if(this.problemaService.lessThanFive()){
-        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion2.getClientProperty("Valor"));
-        this.gato.cambiarEstado();
-        jProgressBar.setValue(gato.getPuntaje());
-        PonerGato();
-        Problema problema = this.problemaService.leerProblema();
-        
-        Problem.setText(problema.getTextoProblema());
-        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
-         }else{
-            JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: "+ this.gato.getPuntaje());
+        if (this.problemaService.lessThanFive()) {
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion2.getClientProperty("Explanation"));
+
+            this.gato.setPuntaje((int) this.gato.getPuntaje() + (int) Opcion2.getClientProperty("Valor"));
+            this.gato.cambiarEstado();
+            jProgressBar.setValue(gato.getPuntaje());
+            PonerGato();
+            Problema problema = this.problemaService.leerProblema();
+
+            Problem.setText(problema.getTextoProblema());
+            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        } else {
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
+
+            JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
+
+            java.awt.EventQueue.invokeLater(() -> {
+                this.dispose();
+                UI ui = new UI();
+                ui.setSize(1152, 690);
+                ui.setLocationRelativeTo(null);
+                ui.setVisible(true);
+
+            });
         }
     }//GEN-LAST:event_Opcion2ActionPerformed
 
     private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
-         if(this.problemaService.lessThanFive()){
-        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion3.getClientProperty("Valor"));
-        this.gato.cambiarEstado();
-        jProgressBar.setValue(gato.getPuntaje());
-        PonerGato();
-        Problema problema = this.problemaService.leerProblema();
-        
-        Problem.setText(problema.getTextoProblema());
-        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
-         }else{
-            JOptionPane.showMessageDialog(null, "Se acabo");
+        if (this.problemaService.lessThanFive()) {
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
+
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion3.getClientProperty("Explanation"));
+
+            this.gato.setPuntaje((int) this.gato.getPuntaje() + (int) Opcion3.getClientProperty("Valor"));
+            this.gato.cambiarEstado();
+            jProgressBar.setValue(gato.getPuntaje());
+            PonerGato();
+            Problema problema = this.problemaService.leerProblema();
+
+            Problem.setText(problema.getTextoProblema());
+            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        } else {
+            JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
+
+            java.awt.EventQueue.invokeLater(() -> {
+                this.dispose();
+                UI ui = new UI();
+                ui.setSize(1152, 690);
+                ui.setLocationRelativeTo(null);
+                ui.setVisible(true);
+
+            });
         }
     }//GEN-LAST:event_Opcion3ActionPerformed
 
     private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
-         if(this.problemaService.lessThanFive()){
-        this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion4.getClientProperty("Valor"));
-        this.gato.cambiarEstado();
-        jProgressBar.setValue(gato.getPuntaje());
-        PonerGato();
-        Problema problema = this.problemaService.leerProblema();
-        
-        Problem.setText(problema.getTextoProblema());
-        Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
-        Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
-        Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
-        Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
-        Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
-        Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
-        Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
-        Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
-         }else{
-            JOptionPane.showMessageDialog(null, "Se acabo");
+        if (this.problemaService.lessThanFive()) {
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
+
+            JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion4.getClientProperty("Explanation"));
+
+            this.gato.setPuntaje((int) this.gato.getPuntaje() + (int) Opcion4.getClientProperty("Valor"));
+            this.gato.cambiarEstado();
+            jProgressBar.setValue(gato.getPuntaje());
+            PonerGato();
+            Problema problema = this.problemaService.leerProblema();
+
+            Problem.setText(problema.getTextoProblema());
+            Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
+            Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+            Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
+            Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+            Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
+            Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+            Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
+            Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        } else {
+            JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
+
+            java.awt.EventQueue.invokeLater(() -> {
+                this.dispose();
+                UI ui = new UI();
+                ui.setSize(1152, 690);
+                ui.setLocationRelativeTo(null);
+                ui.setVisible(true);
+
+            });
         }
     }//GEN-LAST:event_Opcion4ActionPerformed
 
-    private void nickNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nickNameActionPerformed
+    private void nickNameActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
-    
+    }
+
     private final ImageIcon gatoFeliz = new ImageIcon("src/files/GatoFeliz.png");
     private final ImageIcon gatoNormal = new ImageIcon("src/files/GatoNormal.png");
     private final ImageIcon gatoTriste = new ImageIcon("src/files/GatoTriste.png");
-    
-    private void PonerGato(){
-        this.gato = Gato.getInstancia();      
-        if(gato.getEstadoAnimo()== EstadoAnimo.feliz){
+
+    private void PonerGato() {
+        this.gato = Gato.getInstancia();
+        if (gato.getEstadoAnimo() == EstadoAnimo.feliz) {
             gatoLabel.setIcon(gatoFeliz);
-        }else if(gato.getEstadoAnimo()== EstadoAnimo.normal){
+        } else if (gato.getEstadoAnimo() == EstadoAnimo.normal) {
             gatoLabel.setIcon(gatoNormal);
-        }else if(gato.getEstadoAnimo()== EstadoAnimo.triste){
+        } else if (gato.getEstadoAnimo() == EstadoAnimo.triste) {
             gatoLabel.setIcon(gatoTriste);
         }
     }
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        this.nickname = nickName.getText(); 
+        this.nickname = nickName.getText();
         this.problemaService = new ProblemaServices();
         MainPanel.removeAll();
         MainPanel.add(Juego);
@@ -754,12 +842,11 @@ private void updateScores(String usuario, int puntos) {
         MainPanel.revalidate();
 
         this.gato = Gato.getInstancia();
-        
+
         jProgressBar.setValue(gato.getPuntaje());
         PonerGato();
 
         // TODO add your handling code here:
-
         int id = 0; // ID seleccionado al azar
 
         Problema problema = problemaService.leerProblema();
@@ -767,40 +854,44 @@ private void updateScores(String usuario, int puntos) {
         Problem.setText(problema.getTextoProblema());
         Opcion1.setText(problema.getOpciones().get(0).getDescripcion());
         Opcion1.putClientProperty("Valor", problema.getOpciones().get(0).getPuntaje());
+        Opcion1.putClientProperty("Explanation", problema.getOpciones().get(0).getExplicacion());
         Opcion2.setText(problema.getOpciones().get(1).getDescripcion());
         Opcion2.putClientProperty("Valor", problema.getOpciones().get(1).getPuntaje());
+        Opcion2.putClientProperty("Explanation", problema.getOpciones().get(1).getExplicacion());
         Opcion3.setText(problema.getOpciones().get(2).getDescripcion());
         Opcion3.putClientProperty("Valor", problema.getOpciones().get(2).getPuntaje());
+        Opcion3.putClientProperty("Explanation", problema.getOpciones().get(2).getExplicacion());
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
         Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
+        Opcion4.putClientProperty("Explanation", problema.getOpciones().get(3).getExplicacion());
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        try { 
-            if (clip == null) { 
+        try {
+            if (clip == null) {
                 // Cargar el archivo de audio desde los recursos del proyecto 
-                InputStream audioSrc = getClass().getResourceAsStream("/files/audioTutorial.wav"); 
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioSrc); 
+                InputStream audioSrc = getClass().getResourceAsStream("/files/audioTutorial.wav");
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioSrc);
 
                 // Crear un clip para reproducir el audio 
-                clip = AudioSystem.getClip(); 
-                clip.open(audioStream); 
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
             }
 
-            if (isPlaying) { 
+            if (isPlaying) {
                 // Pausar el audio 
-                pausePosition = clip.getFramePosition(); 
-                clip.stop(); 
-            } else { 
+                pausePosition = clip.getFramePosition();
+                clip.stop();
+            } else {
                 // Reanudar el audio desde la posición pausada 
-                clip.setFramePosition(pausePosition); 
-                clip.start(); 
-            } 
+                clip.setFramePosition(pausePosition);
+                clip.start();
+            }
             // Cambiar el estado del audio 
-            isPlaying = !isPlaying; 
-        } catch (Exception e) { 
-            e.printStackTrace(); 
+            isPlaying = !isPlaying;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -817,6 +908,7 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JButton Opcion4;
     private javax.swing.JTextArea Problem;
     private javax.swing.JPanel Puntuaciones;
+    private javax.swing.JTable Ranking;
     private javax.swing.JPanel Tutorial;
     private javax.swing.JLabel gatoLabel;
     private javax.swing.JButton jButton1;
@@ -840,7 +932,6 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable;
     private java.awt.TextField nickName;
     // End of variables declaration//GEN-END:variables
 }
