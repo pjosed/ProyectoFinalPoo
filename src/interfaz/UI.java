@@ -2,8 +2,10 @@ package interfaz;
 
 import core.EstadoAnimo;
 import core.Gato;
+import core.Services.CrearPuntajeService;
 import core.Services.ProblemaServices;
 import core.problema.Problema;
+import java.io.File;
 import java.util.Vector;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -698,7 +700,7 @@ public class UI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
 
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
-
+            CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
                 UI ui = new UI();
@@ -735,7 +737,7 @@ public class UI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, this.nickname + ", " + Opcion1.getClientProperty("Explanation"));
 
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
-
+            CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
                 UI ui = new UI();
@@ -770,6 +772,7 @@ public class UI extends javax.swing.JFrame {
             Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
         } else {
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
+            CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
 
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
@@ -805,6 +808,7 @@ public class UI extends javax.swing.JFrame {
             Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
         } else {
             JOptionPane.showMessageDialog(null, this.nickname + ", tu puntaje esta vez fue de: " + this.gato.getPuntaje() + ". No te canses de intentar y de convertirte en un pro en aconsejar a Mr. Microfost.");
+            CrearPuntajeService.CreaPuntaje(this.nickname, this.gato.getPuntaje());
 
             java.awt.EventQueue.invokeLater(() -> {
                 this.dispose();
@@ -898,32 +902,32 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void botonSonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSonarActionPerformed
-        try { 
-            if (clip == null) { 
+        try {
+            if (clip == null) {
                 // Cargar el archivo de audio desde los recursos del proyecto 
-                InputStream audioSrc = getClass().getResourceAsStream("/files/HoldingOutForAHero.wav"); 
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioSrc); 
+                InputStream audioSrc = getClass().getResourceAsStream("/files/HoldingOutForAHero.wav");
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioSrc);
 
                 // Crear un clip para reproducir el audio 
-                clip = AudioSystem.getClip(); 
-                clip.open(audioStream); 
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
             }
 
-            if (isPlaying) { 
+            if (isPlaying) {
                 // Pausar el audio 
-                pausePosition = clip.getFramePosition(); 
-                clip.stop(); 
-            } else { 
+                pausePosition = clip.getFramePosition();
+                clip.stop();
+            } else {
                 // Reanudar el audio desde la posición pausada 
-                clip.setFramePosition(pausePosition); 
-                clip.start(); 
-            } 
+                clip.setFramePosition(pausePosition);
+                clip.start();
+            }
             // Cambiar el estado del audio 
-            isPlaying = !isPlaying; 
-        } catch (Exception e) { 
-            e.printStackTrace(); 
+            isPlaying = !isPlaying;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    
+
 
     }//GEN-LAST:event_botonSonarActionPerformed
 

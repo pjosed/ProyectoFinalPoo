@@ -2,6 +2,7 @@ package core.problema;
 
 import core.opcion.Opcion;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ProblemaPhishing extends Problema{
     
@@ -11,4 +12,4 @@ public class ProblemaPhishing extends Problema{
     
 }
 
-
+ 
