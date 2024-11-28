@@ -59,19 +59,19 @@ public class Gato {
     
     
     
-    public EstadoAnimo cambiarEstado(){
+    public void cambiarEstado(){
         
         if (this.puntaje <= 333){
             this.estadoAnimo= triste;
-            return triste;
+            
         } else if((this.puntaje > 333) && (this.puntaje <= 666) ){
             this.estadoAnimo= normal;
-            return normal;
+            
         }else if((this.puntaje > 666) && (this.puntaje <= 1000) ){
             this.estadoAnimo= feliz;
-            return feliz;
+            
         }
-        return null;
+        
     }
     
     public boolean actualizarProblema(){

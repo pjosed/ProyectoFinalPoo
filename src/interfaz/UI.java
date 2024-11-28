@@ -1,5 +1,6 @@
 package interfaz;
 
+import core.EstadoAnimo;
 import core.Gato;
 import core.Services.ProblemaServices;
 import core.problema.Problema;
@@ -87,7 +88,7 @@ public class UI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         Juego = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        gatoNormalLabel = new javax.swing.JLabel();
+        gatoLabel = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         Problem = new javax.swing.JTextArea();
@@ -233,10 +234,10 @@ public class UI extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(1154, 680));
         jPanel3.setLayout(null);
 
-        gatoNormalLabel.setForeground(new java.awt.Color(255, 255, 255));
-        gatoNormalLabel.setText("Gatoo");
-        jPanel3.add(gatoNormalLabel);
-        gatoNormalLabel.setBounds(510, 550, 70, 40);
+        gatoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        gatoLabel.setText("Gatoo");
+        jPanel3.add(gatoLabel);
+        gatoLabel.setBounds(510, 550, 70, 40);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BotonRegresar.PNG"))); // NOI18N
         jButton5.setText("Salir");
@@ -595,9 +596,9 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion1ActionPerformed
         if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion1.getClientProperty("Valor"));
-        
+        this.gato.cambiarEstado();
         jProgressBar.setValue(gato.getPuntaje());
-        
+        PonerGato();
         Problema problema = this.problemaService.leerProblema();
            
         Problem.setText(problema.getTextoProblema());
@@ -619,9 +620,9 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion2ActionPerformed
          if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion2.getClientProperty("Valor"));
-        
+        this.gato.cambiarEstado();
         jProgressBar.setValue(gato.getPuntaje());
-        
+        PonerGato();
         Problema problema = this.problemaService.leerProblema();
         
         Problem.setText(problema.getTextoProblema());
@@ -641,9 +642,9 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion3ActionPerformed
          if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion3.getClientProperty("Valor"));
-        
+        this.gato.cambiarEstado();
         jProgressBar.setValue(gato.getPuntaje());
-        
+        PonerGato();
         Problema problema = this.problemaService.leerProblema();
         
         Problem.setText(problema.getTextoProblema());
@@ -663,9 +664,9 @@ private void updateScores(String usuario, int puntos) {
     private void Opcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Opcion4ActionPerformed
          if(this.problemaService.lessThanFive()){
         this.gato.setPuntaje((int)this.gato.getPuntaje() + (int)Opcion4.getClientProperty("Valor"));
-        
+        this.gato.cambiarEstado();
         jProgressBar.setValue(gato.getPuntaje());
-        
+        PonerGato();
         Problema problema = this.problemaService.leerProblema();
         
         Problem.setText(problema.getTextoProblema());
@@ -686,6 +687,18 @@ private void updateScores(String usuario, int puntos) {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
 
+    
+    private void PonerGato(){
+        this.gato = Gato.getInstancia();
+        
+        if(gato.getEstadoAnimo()== EstadoAnimo.feliz){
+            gatoLabel.setText("Gato Feliz");
+        }else if(gato.getEstadoAnimo()== EstadoAnimo.normal){
+            gatoLabel.setText("Gato Normal");
+        }else if(gato.getEstadoAnimo()== EstadoAnimo.triste){
+            gatoLabel.setText("Gato Triste");
+        }
+    }
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         this.problemaService = new ProblemaServices();
         MainPanel.removeAll();
@@ -696,6 +709,7 @@ private void updateScores(String usuario, int puntos) {
         this.gato = Gato.getInstancia();
         
         jProgressBar.setValue(gato.getPuntaje());
+        PonerGato();
 
         // TODO add your handling code here:
 
@@ -728,7 +742,7 @@ private void updateScores(String usuario, int puntos) {
     private javax.swing.JTextArea Problem;
     private javax.swing.JPanel Puntuaciones;
     private javax.swing.JPanel Tutorial;
-    private javax.swing.JLabel gatoNormalLabel;
+    private javax.swing.JLabel gatoLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
