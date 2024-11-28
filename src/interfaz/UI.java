@@ -25,7 +25,10 @@ import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
 import static org.apache.poi.ss.usermodel.CellType.STRING;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
+import javax.sound.sampled.AudioInputStream; 
+import javax.sound.sampled.AudioSystem; 
+import javax.sound.sampled.Clip; 
+import java.io.InputStream;
 
 
 
@@ -61,7 +64,9 @@ public class UI extends javax.swing.JFrame {
         
     }
 
-        
+      private Clip clip; 
+      private boolean isPlaying = false; 
+      private int pausePosition = 0;  
         
     
 
@@ -374,6 +379,11 @@ public class UI extends javax.swing.JFrame {
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         Tutorial.add(jButton6);
         jButton6.setBounds(907, 33, 200, 60);
 
@@ -727,6 +737,35 @@ private void updateScores(String usuario, int puntos) {
         Opcion4.setText(problema.getOpciones().get(3).getDescripcion());
         Opcion4.putClientProperty("Valor", problema.getOpciones().get(3).getPuntaje());
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        try { 
+            if (clip == null) { 
+                // Cargar el archivo de audio desde los recursos del proyecto 
+                InputStream audioSrc = getClass().getResourceAsStream("/files/audioTutorial.wav"); 
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioSrc); 
+
+                // Crear un clip para reproducir el audio 
+                clip = AudioSystem.getClip(); 
+                clip.open(audioStream); 
+            }
+
+            if (isPlaying) { 
+                // Pausar el audio 
+                pausePosition = clip.getFramePosition(); 
+                clip.stop(); 
+            } else { 
+                // Reanudar el audio desde la posición pausada 
+                clip.setFramePosition(pausePosition); 
+                clip.start(); 
+            } 
+            // Cambiar el estado del audio 
+            isPlaying = !isPlaying; 
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
