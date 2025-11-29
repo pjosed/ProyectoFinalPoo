@@ -122,6 +122,6 @@ and start guiding your CyberCat through digital chaos. 😼⚡
 
 ---
 
-##📝 License
+## 📝 License
 For academic and educational use.
 
