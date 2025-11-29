@@ -56,12 +56,12 @@ https://revistasescuelanaval.com/obk/article/view/106
 ### 🧠 Learning Experience
 - Raises awareness of cyber addiction, phishing, spoofing, grooming  
 - Focus on **decision-making**  
-- Fast, fun, and accessible for students and general audiences  
+- Fast, fun, and accessible for students, kids, schools and general audiences  
 
 ### 🏆 High Score System
 - Automatically stores best scores  
 - Simple ranking structure  
-- Players can compete to “take best care” of the cat  
+- Players can compete to “take best care” of Mr, Microfost.
 
 ---
 
@@ -69,15 +69,10 @@ https://revistasescuelanaval.com/obk/article/view/106
 The project includes:
 - Custom lists / structures for scenarios and options  
 - File persistence for score saving  
-- Custom **Abstract Data Type (TAD)** for problem modeling  
-- GUI architecture separating logic from visuals  
-
-Core classes:
-- `Problema`  
-- `ProblemaPhishing`, `ProblemaCiberadiccion`, etc.  
-- `Opcion`  
-- `Controlador` / game manager  
-
+- Custom **Abstract Data Type (TAD)** for problem modeling
+- Created with the paradigm of object-oriented programming (OOP)
+- GUI architecture separating logic from visuals
+- 
 📌 **Architecture diagram:**  
 ![Architecture Diagram](assets/architecture-diagram.png)
 
