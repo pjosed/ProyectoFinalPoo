@@ -74,16 +74,11 @@ The project includes:
 - GUI architecture separating logic from visuals
 - 
 📌 **Architecture diagram:**  
-![Architecture Diagram](assets/architecture-diagram.png)
+![Article cover](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/UML-MRMICROFOS.png)
 
 ---
 
 ## 🖼️ Screenshots
-Ejemplo visual:
-
-| Menu | Scenario | Scoreboard |
-|------|----------|------------|
-| ![Menu](assets/menu.png) | ![Situation](assets/situations.png) | ![Scores](assets/scores.png) |
 
 ---
 
