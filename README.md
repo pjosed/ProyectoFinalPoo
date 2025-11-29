@@ -80,8 +80,10 @@ The project includes:
 
 ## 🖼️ Screenshots
 ![Screenshots](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/MenuGATO.png)
+
 ![Screenshots](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/OpcionesGATO.png)
 
+![Screenshots](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/RetroalimentacionGATO.png)
 
 
 ---
