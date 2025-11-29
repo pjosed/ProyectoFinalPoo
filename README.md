@@ -93,10 +93,8 @@ The game was tested by multiple users, validating:
 - Clear and intuitive navigation  
 - Easy interaction  
 - Motivating decision feedback  
-- Measurable learning effect across scenarios  
+- Measurable learning effect across scenarios
 
-📊 **Usability chart:**  
-![Usability Chart](assets/usability-chart.png)
 
 ---
 
@@ -110,20 +108,20 @@ The game was tested by multiple users, validating:
 ---
 
 ## 🧑‍💻 Team
-Developed as a **5-person project** for *Estructura de Datos I*.  
-(If you want exact names added, tell me 👉😼)
+Developed as a **5-person project** for *Estructura de Datos I* and *Programación orientada a objetos*.  
 
 ---
 
 ## ▶️ Run the Project
-```bash
-git clone https://github.com/TU-USUARIO/CyberCat.git
+Open git bash where you want to download the game
+Type git clone https://github.com/TU-USUARIO/CyberCat.git
 
-Open the project in NetBeans or IntelliJ,
+Open the project in NetBeans,
 run the Main class,
 and start guiding your CyberCat through digital chaos. 😼⚡
 
-##📝 License
+---
 
+##📝 License
 For academic and educational use.
 
