@@ -74,11 +74,15 @@ The project includes:
 - GUI architecture separating logic from visuals
 - 
 📌 **Architecture diagram:**  
-![Article cover](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/UML-MRMICROFOS.png)
+![Architecture diagram](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/UML-MRMICROFOS.png)
 
 ---
 
 ## 🖼️ Screenshots
+![Screenshots](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/MenuGATO.png)
+![Screenshots](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/OpcionesGATO.png)
+
+
 
 ---
 
