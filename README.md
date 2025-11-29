@@ -1,4 +1,4 @@
-# 🐱 CyberCat — Gamified Learning Against Digital Threats  
+# 🐱 MrMicrofost — Gamified Learning Against Digital Threats  
 ### 📘 Published in *OnBoard Knowledge Journal (2025)*
 
 CyberCat is a **decision-based educational game** where you help a cat survive digital threats by choosing the healthiest responses to real cybersecurity scenarios.
@@ -6,7 +6,7 @@ CyberCat is a **decision-based educational game** where you help a cat survive d
 ---
 
 ## 🚀 About the Project
-CyberCat teaches users about **cyber addiction, spoofing, phishing, grooming**, and other digital risks — but *not* through boring quizzes.
+Mr. Microfost teaches users about **cyber addiction, spoofing, phishing, grooming**, and other digital risks — but *not* through boring quizzes.
 
 Instead, you interact with a small cat whose **HP bar increases or decreases** based on the quality of your decisions across **5 different situations**.
 
@@ -40,7 +40,7 @@ OnBoard Knowledge Journal, 1(02), 1–8.
 https://revistasescuelanaval.com/obk/article/view/106
 
 📘 **Article cover:**  
-![Article Cover](assets/article-cover.png)
+![Article cover](https://raw.githubusercontent.com/pjosed/ProyectoFinalPoo/main/Assets/PortadaRevista.png)
 
 ---
 
